@@ -1,20 +1,3 @@
-The reason your SVGs aren't rendering is that **GitHub's Markdown parser strictly strips out inline `<svg>` tags** for security reasons (to prevent Cross-Site Scripting / XSS attacks). 
-
-To fix this, you have two options. 
-
-### Option 1: The "Proper" Fix (Use External Files)
-You need to save your SVG code into actual files inside your repository (e.g., in an `assets` folder) and reference them using an HTML `<img>` tag. GitHub allows SVGs when they are loaded as images.
-
-1. Create a folder in your repo named `assets`.
-2. Save your 4 SVGs into that folder as: `snowflake.svg`, `structure.svg`, `weights.svg`, and `tracker.svg`.
-3. Replace the inline `<svg>` tags in your `README.md` with `<img src="assets/filename.svg" width="..." height="...">`.
-
-### Option 2: The Quick Fix (Use Emojis)
-If you don't want to mess with extra files, you can replace those icons with standard emojis that render beautifully on GitHub. 
-
-Here is your **updated `README.md` code** using **Option 1 (with `<img>` tags)**. *Just make sure you save those SVGs into an `assets/` folder to make this work!*
-
-```html
 <div align="center">
 
 <img src="assets/snowflake.svg" alt="Snowflake" width="64" height="64">
@@ -191,6 +174,3 @@ Every time you learn something new in this repo, run it through three questions:
 3. **What scenario on the exam might test this?** Train yourself to think in business situations, not feature lists.
 
 Sixty days is a generous runway. The people who fail this exam do so because they studied the wrong things for too long, not because they lacked the time. Use the domain weights. Trust the schedule. Stay consistent.
-```
-
-*(Note: In the modified code above, I also added `align="top"` to the 20x20 icons so they align perfectly with the text of your `###` headers!)*
