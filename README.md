@@ -105,11 +105,16 @@ Understanding how the exam is weighted tells you where to invest your time. Doma
 | 1.0 | Data Ingestion and Preparation | **17%** | 🟢 Foundation |
 
 Domain 1 is listed last here intentionally. It is foundational knowledge you likely already have some exposure to. Treat it as a warmup, not a destination. Get through it efficiently and move into the heavier domains where your score is actually determined.
-
+<table>
+  <tr>
+    <td width="55%" valign="top">
+      <!-- your text content -->
     </td>
     <td width="45%" valign="top">
       <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" width="100%" />
     </td>
+  </tr>
+</table>
   </tr>
 </table>
 
