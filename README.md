@@ -162,7 +162,9 @@ Mark topics as you complete them. Do not mark something done until you can expla
   </tr>
 </table>
 
-##   <img src="assets/mindset.svg" alt="Snowflake" width="64" height="64" /> The Mindset
+## <svg viewBox="0 0 24 24" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cg fill='none' stroke='white' stroke-miterlimit='10' stroke-width='1.5'%3e%3cpath d='M12 4.36v16.23a1.92 1.92 0 0 1-1.91 1.91 1.93 1.93 0 0 1-1.91-1.91 2.5 2.5 0 0 1-.48 0 3.35 3.35 0 0 1-3.34-3.34 3.2 3.2 0 0 1 .08-.7 4.29 4.29 0 0 1-.84-7.76 3.2 3.2 0 0 1-.19-1.09 3.34 3.34 0 0 1 2.86-3.3 2.87 2.87 0 0 1 5.73 0Z'/%3e%3cpath d='M6.75 11.05a3.35 3.35 0 0 1 0-6.69m1.43 9.55A3.82 3.82 0 0 1 12 17.73M9.14 7.23A2.86 2.86 0 0 0 12 4.36'/%3e%3cpath d='M12 4.36v16.23a1.92 1.92 0 0 0 1.91 1.91 1.93 1.93 0 0 0 1.91-1.91 2.5 2.5 0 0 0 .48 0 3.35 3.35 0 0 0 3.34-3.34 3.2 3.2 0 0 0-.08-.7 4.29 4.29 0 0 0 .84-7.76 3.2 3.2 0 0 0 .19-1.09 3.34 3.34 0 0 0-2.86-3.3 2.87 2.87 0 0 0-5.73 0Z'/%3e%3cpath d='M17.25 11.05a3.35 3.35 0 0 0 0-6.69m-1.43 9.55A3.82 3.82 0 0 0 12 17.73m2.86-10.5A2.86 2.86 0 0 1 12 4.36'/%3e%3c/g%3e%3c/svg%3e
+</svg> The Mindset
 
 > *"The exam rewards people who understand how Snowflake thinks, not people who memorized syntax."*
 
