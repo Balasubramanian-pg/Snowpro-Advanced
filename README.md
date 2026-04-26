@@ -164,7 +164,7 @@ Mark topics as you complete them. Do not mark something done until you can expla
 
 ##   <img src="assets/brain.svg" alt="Snowflake" width="20" height="20" />  The Mindset
 
-
+>[!Note]
 > *"The exam rewards people who understand how Snowflake thinks, not people who memorized syntax."*
 
 Every time you learn something new in this repo, run it through three questions:
