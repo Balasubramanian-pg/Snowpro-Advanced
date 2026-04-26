@@ -4,7 +4,7 @@
 # SnowPro Advanced: Data Analyst
 ### 60-Day Study Repository
 
-📅 **Exam Date:** June 24, 2026 &nbsp;&nbsp; 🚩 **Start Date:** April 25, 2026
+<img src="assets/calendar.svg" width="20" height="20" align="top"> **Exam Date:** June 24, 2026 &nbsp;&nbsp; 🚩 **Start Date:** April 25, 2026
 
 </div>
 
