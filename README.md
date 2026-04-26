@@ -1,5 +1,3 @@
-Here is the modified HTML document, updated to use the custom SVG icons as requested.
-```html
 <div align="center">
 
 <!-- Custom Snowflake Logo (White) -->
@@ -199,4 +197,3 @@ Every time you learn something new in this repo, run it through three questions:
 3. **What scenario on the exam might test this?** Train yourself to think in business situations, not feature lists.
 
 Sixty days is a generous runway. The people who fail this exam do so because they studied the wrong things for too long, not because they lacked the time. Use the domain weights. Trust the schedule. Stay consistent.
-```
