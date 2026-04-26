@@ -9,8 +9,6 @@
 
 </div>
 
----
-
 <table width="100%">
   <tr>
     <td width="55%" valign="top" style="padding-right:24px;">
@@ -33,8 +31,6 @@ A few principles worth anchoring to before you begin:
     </td>
   </tr>
 </table>
-
----
 
 <table width="100%">
   <tr>
@@ -94,8 +90,6 @@ snowpro-da-prep/
   </tr>
 </table>
 
----
-
 <table width="100%">
   <tr>
     <td width="55%" valign="top" style="padding-right:24px;">
@@ -119,8 +113,6 @@ Domain 1 is listed last here intentionally. It is foundational knowledge you lik
     </td>
   </tr>
 </table>
-
----
 
 <table width="100%">
   <tr>
@@ -170,8 +162,6 @@ Mark topics as you complete them. Do not mark something done until you can expla
     </td>
   </tr>
 </table>
-
----
 
 ## <img src="https://api.iconify.design/ph/brain-light.svg?color=%231F2937&width=22&height=22" width="22" /> The Mindset
 
