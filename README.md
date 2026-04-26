@@ -5,7 +5,7 @@
 # SnowPro Advanced: Data Analyst
 ### 60-Day Study Repository
 
-📅 **Exam Date:** June 24, 2026 &nbsp;&nbsp; 🚩 **Start Date:** April 25, 2026
+**Exam Date:** June 24, 2026 &nbsp;&nbsp; **Start Date:** April 25, 2026
 
 </div>
 
@@ -15,7 +15,7 @@
   <tr>
     <td width="55%" valign="top" style="padding-right:24px;">
 
-### 📖 Before You Start
+### Before You Start
 
 This repo is structured so you never have to ask what to study next. Everything is sequenced, weighted by exam priority, and ready to work through one file at a time. Your only job is to open the next file and understand what you read.
 
@@ -106,10 +106,10 @@ Understanding how the exam is weighted tells you where to invest your time. Doma
 
 | Domain | Topic | Weight | Priority |
 |--------|-------|:------:|----------|
-| 3.0 | Data Analysis | **32%** | 🔴 Highest |
-| 4.0 | Data Presentation and Visualization | **28%** | 🔴 High |
-| 2.0 | Data Transformation and Modeling | **23%** | 🟡 Medium |
-| 1.0 | Data Ingestion and Preparation | **17%** | 🟢 Foundation |
+| 3.0 | Data Analysis | **32%** | Highest |
+| 4.0 | Data Presentation and Visualization | **28%** | High |
+| 2.0 | Data Transformation and Modeling | **23%** | Medium |
+| 1.0 | Data Ingestion and Preparation | **17%** | Foundation |
 
 Domain 1 is listed last here intentionally. It is foundational knowledge you likely already have some exposure to. Treat it as a warmup, not a destination. Get through it efficiently and move into the heavier domains where your score is actually determined.
 
@@ -173,7 +173,7 @@ Mark topics as you complete them. Do not mark something done until you can expla
 
 ---
 
-## 🧠 The Mindset
+## The Mindset
 
 > *"The exam rewards people who understand how Snowflake thinks, not people who memorized syntax."*
 
