@@ -106,8 +106,6 @@ Understanding how the exam is weighted tells you where to invest your time. Doma
 
 Domain 1 is listed last here intentionally. It is foundational knowledge you likely already have some exposure to. Treat it as a warmup, not a destination. Get through it efficiently and move into the heavier domains where your score is actually determined.
 
-<img width="736" height="1307" alt="image" src="https://github.com/user-attachments/assets/4fb9b84e-9880-4953-9b01-aa4e19238df2" />
-
 <table width="100%">
   <tr>
     <td width="55%" valign="top" style="padding-right:24px;">
