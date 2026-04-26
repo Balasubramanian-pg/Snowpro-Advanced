@@ -163,7 +163,7 @@ Mark topics as you complete them. Do not mark something done until you can expla
 </table>
 
 ##  The Mindset
-  <img src="assets/snowflake.svg" alt="Snowflake" width="64" height="64" />
+  <img src="assets/mindset.svg" alt="Snowflake" width="64" height="64" />
 
 > *"The exam rewards people who understand how Snowflake thinks, not people who memorized syntax."*
 
