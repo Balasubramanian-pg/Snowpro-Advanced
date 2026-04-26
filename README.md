@@ -9,46 +9,38 @@
 
 </div>
 
-<br>
+---
 
 <table width="100%">
   <tr>
-    <td width="50%" style="padding:4px;">
-      <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?q=80&w=687&auto=format&fit=crop" width="100%" />
-    </td>
-    <td width="50%" style="padding:4px;">
-      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?q=80&w=1170&auto=format&fit=crop" width="100%" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" style="padding:4px;">
-      <img src="https://images.unsplash.com/photo-1618389041494-8fab89c3f22b?q=80&w=687&auto=format&fit=crop" width="100%" />
-    </td>
-    <td width="50%" style="padding:4px;">
-      <img src="https://images.unsplash.com/photo-1698919585695-546e4a31fc8f?q=80&w=1331&auto=format&fit=crop" width="100%" />
-    </td>
-  </tr>
-</table>
+    <td width="55%" valign="top" style="padding-right:24px;">
 
-<br>
-
----
-
-## <img src="https://api.iconify.design/ph/book-open-light.svg?color=%231F2937&width=22&height=22" width="22" /> Before You Start
+### <img src="https://api.iconify.design/ph/book-open-light.svg?color=%231F2937&width=20&height=20" width="20" /> Before You Start
 
 This repo is structured so you never have to ask what to study next. Everything is sequenced, weighted by exam priority, and ready to work through one file at a time. Your only job is to open the next file and understand what you read.
 
 A few principles worth anchoring to before you begin:
 
-- **Don't try to memorize everything.** Snowflake rewards intuition over recall. Understand the *why* behind each concept and the syntax follows naturally.
+- **Don't memorize. Understand.** Snowflake rewards intuition over recall. Grasp the *why* behind each concept and the syntax follows naturally.
 - **One topic per day is enough.** Sixty days of consistent effort will outperform two weeks of panicked cramming every time.
 - **SQL is your primary weapon.** Practice writing queries from scratch, not just reading them. The exam gives you scenarios, not fill-in-the-blanks.
 - **Think in business problems.** Every question describes a situation a real data analyst faces. Ask yourself what outcome the business needs, then work backwards to the Snowflake feature.
-- **Domains 3 and 4 are where the exam is won or lost.** Together they account for 60% of your score. Do not let the earlier domains consume disproportionate time just because they feel more familiar.
+- **Domains 3 and 4 are where the exam is won or lost.** Together they account for 60% of your score. Do not let Domain 1 eat all your time just because it feels more familiar.
+
+    </td>
+    <td width="45%" valign="top">
+      <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?q=80&w=687&auto=format&fit=crop" width="100%" />
+    </td>
+  </tr>
+</table>
 
 ---
 
-## <img src="https://api.iconify.design/ph/folder-simple-light.svg?color=%231F2937&width=22&height=22" width="22" /> Repository Structure
+<table width="100%">
+  <tr>
+    <td width="55%" valign="top" style="padding-right:24px;">
+
+### <img src="https://api.iconify.design/ph/folder-simple-light.svg?color=%231F2937&width=20&height=20" width="20" /> Repository Structure
 
 The repo is divided into six top-level directories. Work through them in order. The `00-exam-overview` folder contains the day-by-day schedule and a full breakdown of what each domain tests. Start there before touching anything else.
 
@@ -56,10 +48,10 @@ The repo is divided into six top-level directories. Work through them in order. 
 snowpro-da-prep/
 │
 ├── 00-exam-overview/
-│   ├── exam-breakdown.md          Domain weights, format, question types
-│   └── 60-day-study-plan.md       Your day-by-day schedule
+│   ├── exam-breakdown.md
+│   └── 60-day-study-plan.md
 │
-├── 01-data-ingestion-preparation/        17% of exam
+├── 01-data-ingestion-preparation/    17%
 │   ├── 1.1-retrieving-data.md
 │   ├── 1.2-data-discovery.md
 │   ├── 1.3-snowflake-marketplace.md
@@ -68,29 +60,25 @@ snowpro-da-prep/
 │   ├── 1.6-loading-data.md
 │   └── 1.7-snowflake-functions.md
 │
-├── 02-data-transformation-modeling/      23% of exam
+├── 02-data-transformation-modeling/  23%
 │   ├── 2.1-data-types-formats.md
 │   ├── 2.2-data-cleaning.md
 │   ├── 2.3-querying-and-working-data.md
 │   ├── 2.4-data-modeling.md
 │   └── 2.5-query-performance.md
 │
-├── 03-data-analysis/                     32% of exam
+├── 03-data-analysis/                 32%
 │   ├── 3.1-sql-extensibility.md
 │   ├── 3.2-descriptive-analysis.md
 │   ├── 3.3-diagnostic-analysis.md
 │   └── 3.4-forecasting-predictive.md
 │
-├── 04-data-presentation-visualization/   28% of exam
+├── 04-data-presentation/             28%
 │   ├── 4.1-dashboards-and-reports.md
 │   ├── 4.2-maintaining-dashboards.md
 │   └── 4.3-visualizations.md
 │
 ├── 05-practice-questions/
-│   ├── domain-1-questions.md
-│   ├── domain-2-questions.md
-│   ├── domain-3-questions.md
-│   ├── domain-4-questions.md
 │   └── full-mock-exam.md
 │
 └── 06-quick-reference/
@@ -99,11 +87,22 @@ snowpro-da-prep/
     └── exam-day-checklist.md
 ```
 
+    </td>
+    <td width="45%" valign="top">
+      <img src="https://images.unsplash.com/photo-1511376777868-611b54f68947?q=80&w=1170&auto=format&fit=crop" width="100%" />
+    </td>
+  </tr>
+</table>
+
 ---
 
-## <img src="https://api.iconify.design/ph/chart-bar-light.svg?color=%231F2937&width=22&height=22" width="22" /> Domain Weights
+<table width="100%">
+  <tr>
+    <td width="55%" valign="top" style="padding-right:24px;">
 
-Understanding how the exam is weighted tells you where to invest your time. Domain 3 (Data Analysis) is the single largest section at 32%. Domain 4 (Data Presentation and Visualization) follows at 28%. Prioritize accordingly.
+### <img src="https://api.iconify.design/ph/chart-bar-light.svg?color=%231F2937&width=20&height=20" width="20" /> Domain Weights
+
+Understanding how the exam is weighted tells you where to invest your time. Domain 3 is the single largest section at 32%. Domain 4 follows at 28%. Between them they determine more than half your score, so they get the lion's share of your attention.
 
 | Domain | Topic | Weight | Priority |
 |--------|-------|:------:|----------|
@@ -114,13 +113,24 @@ Understanding how the exam is weighted tells you where to invest your time. Doma
 
 Domain 1 is listed last here intentionally. It is foundational knowledge you likely already have some exposure to. Treat it as a warmup, not a destination. Get through it efficiently and move into the heavier domains where your score is actually determined.
 
+    </td>
+    <td width="45%" valign="top">
+      <img src="https://images.unsplash.com/photo-1618389041494-8fab89c3f22b?q=80&w=687&auto=format&fit=crop" width="100%" />
+    </td>
+  </tr>
+</table>
+
 ---
 
-## <img src="https://api.iconify.design/ph/check-square-light.svg?color=%231F2937&width=22&height=22" width="22" /> Progress Tracker
+<table width="100%">
+  <tr>
+    <td width="55%" valign="top" style="padding-right:24px;">
 
-Mark topics as you complete them. Do not mark something done until you can explain the concept out loud without looking at your notes. That is the real test of readiness.
+### <img src="https://api.iconify.design/ph/check-square-light.svg?color=%231F2937&width=20&height=20" width="20" /> Progress Tracker
 
-### Domain 1: Data Ingestion and Preparation
+Mark topics as you complete them. Do not mark something done until you can explain the concept out loud without looking at your notes.
+
+**Domain 1: Data Ingestion and Preparation**
 - [ ] 1.1 Retrieving Data
 - [ ] 1.2 Data Discovery
 - [ ] 1.3 Snowflake Marketplace
@@ -129,30 +139,37 @@ Mark topics as you complete them. Do not mark something done until you can expla
 - [ ] 1.6 Loading Data
 - [ ] 1.7 Snowflake Functions
 
-### Domain 2: Data Transformation and Modeling
+**Domain 2: Data Transformation and Modeling**
 - [ ] 2.1 Data Types and Formats
 - [ ] 2.2 Data Cleaning
 - [ ] 2.3 Querying and Working with Data
 - [ ] 2.4 Data Modeling
 - [ ] 2.5 Query Performance
 
-### Domain 3: Data Analysis
+**Domain 3: Data Analysis**
 - [ ] 3.1 SQL Extensibility (UDFs, Stored Procs, Views)
 - [ ] 3.2 Descriptive Analysis
 - [ ] 3.3 Diagnostic Analysis
 - [ ] 3.4 Forecasting and Predictive Analysis
 
-### Domain 4: Data Presentation and Visualization
+**Domain 4: Data Presentation and Visualization**
 - [ ] 4.1 Dashboards and Reports
 - [ ] 4.2 Maintaining Dashboards
 - [ ] 4.3 Visualizations
 
-### Practice
+**Practice**
 - [ ] Domain 1 Practice Questions
 - [ ] Domain 2 Practice Questions
 - [ ] Domain 3 Practice Questions
 - [ ] Domain 4 Practice Questions
 - [ ] Full Mock Exam
+
+    </td>
+    <td width="45%" valign="top">
+      <img src="https://images.unsplash.com/photo-1698919585695-546e4a31fc8f?q=80&w=1331&auto=format&fit=crop" width="100%" />
+    </td>
+  </tr>
+</table>
 
 ---
 
