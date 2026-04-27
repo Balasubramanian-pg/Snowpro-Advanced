@@ -112,7 +112,7 @@ Domain 1 is listed last here intentionally. It is foundational knowledge you lik
 
 ### <img src="assets/tracker.svg" width="20" height="20" align="top"> Progress Tracker
 
-Mark topics as you complete them. Do not mark something done until you can explain the concept out loud without looking at your notes.
+Mark topics as you complete them. Do not mark something done until you can explain the concept out loud without looking at your notes. It also helps to cover the [learning tracks](https://learn.snowflake.com/en/#learningTracks)
 
 **Domain 1: Data Ingestion and Preparation**
 - [ ] 1.1 Retrieving Data
