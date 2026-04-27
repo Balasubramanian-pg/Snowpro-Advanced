@@ -1,20 +1,16 @@
-<p align="center">
+<div>
   <img src="assets/snowflake.svg" alt="Snowflake" width="64" height="64" />
-</p>
 
-<h1 align="center">SnowPro Advanced: Data Analyst</h1>
-<h3 align="center">60-Day Study Repository</h3>
+# SnowPro Advanced: Data Analyst
+### 60-Day Study Repository
 
-<p align="center">
-  <img src="assets/calendar.svg" width="20" height="20" align="top"> <strong>Exam Date:</strong> June 24, 2026 &nbsp;&nbsp; 
-  <img src="assets/calendar-check.svg" width="20" height="20" align="top"> <strong>Start Date:</strong> April 25, 2026
-</p>
+<img src="assets/calendar.svg" width="20" height="20" align="top"> **Exam Date:** June 24, 2026 &nbsp;&nbsp; <img src="assets/calendar-check.svg" width="20" height="20" align="top"> **Start Date:** April 25, 2026
 
-<hr>
+</div>
 
 <table width="100%">
   <tr>
-    <td width="55%" valign="top">
+    <td width="55%" valign="top" style="padding-right:24px;">
 
 ### 📖 Before You Start
 
@@ -37,7 +33,7 @@ A few principles worth anchoring to before you begin:
 
 <table width="100%">
   <tr>
-    <td width="55%" valign="top">
+    <td width="55%" valign="top" style="padding-right:24px;">
 
 ### <img src="assets/structure.svg" width="20" height="20" align="top"> Repository Structure
 
@@ -93,7 +89,9 @@ snowpro-da-prep/
   </tr>
 </table>
 
----
+<table width="100%">
+  <tr>
+    <td width="55%" valign="top" style="padding-right:24px;">
 
 ### <img src="assets/weights.svg" width="20" height="20" align="top"> Domain Weights
 
@@ -108,11 +106,9 @@ Understanding how the exam is weighted tells you where to invest your time. Doma
 
 Domain 1 is listed last here intentionally. It is foundational knowledge you likely already have some exposure to. Treat it as a warmup, not a destination. Get through it efficiently and move into the heavier domains where your score is actually determined.
 
----
-
 <table width="100%">
   <tr>
-    <td width="55%" valign="top">
+    <td width="55%" valign="top" style="padding-right:24px;">
 
 ### <img src="assets/tracker.svg" width="20" height="20" align="top"> Progress Tracker
 
@@ -154,12 +150,12 @@ Mark topics as you complete them. Do not mark something done until you can expla
 
     </td>
     <td width="45%" valign="top">
-      <img src="https://images.unsplash.com/photo-1698919585695-546e4a31fc8f?q=80&w=1331&auto=format&fit=crop" width="100%" />
+      <img src="https://images.unsplash.com/photo-1698919585695-546e4a31fc8f?q=80&w=1331&auto=format&fit=crop" width="100%" height="650" />
     </td>
   </tr>
 </table>
 
-## <img src="assets/brain.svg" alt="Snowflake" width="20" height="20" /> The Mindset
+##   <img src="assets/brain.svg" alt="Snowflake" width="20" height="20" />  The Mindset
 
 >[!Note]
 > *"The exam rewards people who understand how Snowflake thinks, not people who memorized syntax."*
