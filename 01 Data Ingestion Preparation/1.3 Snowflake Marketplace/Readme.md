@@ -25,7 +25,7 @@ Marketplace ingestion relies on secure data sharing, not data movement. The prov
 ```mermaid
 graph TD
   A[Provider Marketplace Listing] -->|Secure Share Grant| B[Consumer Account]
-  B -->|CREATE DATABASE FROM SHARE| C[Shared Database (Read-Only)]
+  B -->|CREATE DATABASE FROM SHARE| C["Shared Database (Read-Only)"]
   C -->|Secure Views / Tables| D[Validation & Schema Contract Layer]
   D -->|Materialization / MERGE| E[Internal Staging / Curated Tables]
   E -->|Downstream Transformation| F[Analytics / BI / ML]
