@@ -4,17 +4,15 @@
 # SnowPro Advanced: Data Analyst
 ### 60-Day Study Repository
 
-**Exam Date:** June 24, 2026 &nbsp;&nbsp;|&nbsp;&nbsp; **Start Date:** April 25, 2026
+<img src="assets/calendar.svg" width="20" height="20" align="top"> **Exam Date:** June 24, 2026 &nbsp;&nbsp; <img src="assets/calendar-check.svg" width="20" height="20" align="top"> **Start Date:** April 25, 2026
 
 </div>
 
----
+<table width="100%">
+  <tr>
+    <td width="55%" valign="top" style="padding-right:24px;">
 
-## 📖 Before You Start
-
-<table>
-<tr>
-<td width="60%">
+### 📖 Before You Start
 
 This repo is structured so you never have to ask what to study next. Everything is sequenced, weighted by exam priority, and ready to work through one file at a time. Your only job is to open the next file and understand what you read.
 
@@ -26,20 +24,18 @@ A few principles worth anchoring to before you begin:
 - **Think in business problems.** Every question describes a situation a real data analyst faces. Ask yourself what outcome the business needs, then work backwards to the Snowflake feature.
 - **Domains 3 and 4 are where the exam is won or lost.** Together they account for 60% of your score. Do not let Domain 1 eat all your time just because it feels more familiar.
 
-</td>
-<td width="40%" align="center">
-  <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?q=80&w=687&auto=format&fit=crop" width="100%" />
-</td>
-</tr>
+    </td>
+    <td width="45%" valign="top">
+      <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?q=80&w=687&auto=format&fit=crop" width="100%" />
+    </td>
+  </tr>
 </table>
 
----
+<table width="100%">
+  <tr>
+    <td width="55%" valign="top" style="padding-right:24px;">
 
-## 🗂 Repository Structure
-
-<table>
-<tr>
-<td width="60%">
+### <img src="assets/structure.svg" width="20" height="20" align="top"> Repository Structure
 
 The repo is divided into six top-level directories. Work through them in order. The `00-exam-overview` folder contains the day-by-day schedule and a full breakdown of what each domain tests. Start there before touching anything else.
 
@@ -86,20 +82,18 @@ snowpro-da-prep/
     └── exam-day-checklist.md
 ```
 
-</td>
-<td width="40%" align="center">
-  <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1000&auto=format&fit=crop" width="100%" />
-</td>
-</tr>
+    </td>
+    <td width="45%" valign="top">
+      <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1000&auto=format&fit=crop" width="100%" />
+    </td>
+  </tr>
 </table>
 
----
+<table width="100%">
+  <tr>
+    <td width="55%" valign="top" style="padding-right:24px;">
 
-## ⚖️ Domain Weights
-
-<table>
-<tr>
-<td width="60%">
+### <img src="assets/weights.svg" width="20" height="20" align="top"> Domain Weights
 
 Understanding how the exam is weighted tells you where to invest your time. Domain 3 is the single largest section at 32%. Domain 4 follows at 28%. Between them they determine more than half your score, so they get the lion's share of your attention.
 
@@ -112,18 +106,13 @@ Understanding how the exam is weighted tells you where to invest your time. Doma
 
 Domain 1 is listed last here intentionally. It is foundational knowledge you likely already have some exposure to. Treat it as a warmup, not a destination. Get through it efficiently and move into the heavier domains where your score is actually determined.
 
-</td>
-<td width="40%" align="center">
-  <img src="https://images.unsplash.com/photo-1698919585695-546e4a31fc8f?q=80&w=1331&auto=format&fit=crop" width="100%" />
-</td>
-</tr>
-</table>
+<table width="100%">
+  <tr>
+    <td width="55%" valign="top" style="padding-right:24px;">
 
----
+### <img src="assets/tracker.svg" width="20" height="20" align="top"> Progress Tracker
 
-## ✅ Progress Tracker
-
-Mark topics as you complete them. Do not mark something done until you can explain the concept out loud without looking at your notes. It also helps to cover the [learning tracks](https://learn.snowflake.com/en/#learningTracks).
+Mark topics as you complete them. Do not mark something done until you can explain the concept out loud without looking at your notes. It also helps to cover the [learning tracks](https://learn.snowflake.com/en/#learningTracks)
 
 **Domain 1: Data Ingestion and Preparation**
 - [ ] 1.1 Retrieving Data
@@ -159,10 +148,16 @@ Mark topics as you complete them. Do not mark something done until you can expla
 - [ ] Domain 4 Practice Questions
 - [ ] Full Mock Exam
 
----
+    </td>
+    <td width="45%" valign="top">
+      <img src="https://images.unsplash.com/photo-1698919585695-546e4a31fc8f?q=80&w=1331&auto=format&fit=crop" width="100%" height="650" />
+    </td>
+  </tr>
+</table>
 
-## 🧠 The Mindset
+##   <img src="assets/brain.svg" alt="Snowflake" width="20" height="20" />  The Mindset
 
+>[!Note]
 > *"The exam rewards people who understand how Snowflake thinks, not people who memorized syntax."*
 
 Every time you learn something new in this repo, run it through three questions:
