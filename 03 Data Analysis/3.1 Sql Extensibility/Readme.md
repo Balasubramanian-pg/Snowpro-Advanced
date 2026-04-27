@@ -26,7 +26,7 @@ Extensibility operates as isolated execution contexts routed by the query engine
 graph TD
   A[Analytical Query] -->|Handler Invocation| B[Execution Router]
   B -->|Context Mapping| C{Extension Type}
-  C -->|Scalar/Aggregate| D[Language Runtime (JS/Python/Java/Scala)]
+  C -->|Scalar/Aggregate| D[Language Runtime - JS, Python, Java, Scala]
   C -->|Row Expansion| E[UDTF Memory Allocator]
   C -->|External Service| F[API Proxy + IAM Binding]
   C -->|Procedural Workflow| G[Transaction Manager + Cursor]
