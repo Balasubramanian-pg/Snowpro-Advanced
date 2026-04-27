@@ -8,9 +8,9 @@
 
 </div>
 
-<table width="100%">
-  <tr>
-    <td width="55%" valign="top" style="padding-right:24px;">
+<table style="width: 100%; border: none; border-collapse: collapse;">
+  <tr style="border: none;">
+    <td style="width: 55%; vertical-align: top; padding-right: 24px; border: none;">
 
 ### 📖 Before You Start
 
@@ -25,15 +25,15 @@ A few principles worth anchoring to before you begin:
 - **Domains 3 and 4 are where the exam is won or lost.** Together they account for 60% of your score. Do not let Domain 1 eat all your time just because it feels more familiar.
 
     </td>
-    <td width="45%" valign="top">
-      <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?q=80&w=687&auto=format&fit=crop" width="100%" />
+    <td style="width: 45%; vertical-align: top; border: none;">
+      <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?q=80&w=687&auto=format&fit=crop" style="max-width: 100%; height: auto;" />
     </td>
   </tr>
 </table>
 
-<table width="100%">
-  <tr>
-    <td width="55%" valign="top" style="padding-right:24px;">
+<table style="width: 100%; border: none; border-collapse: collapse;">
+  <tr style="border: none;">
+    <td style="width: 55%; vertical-align: top; padding-right: 24px; border: none;">
 
 ### <img src="assets/structure.svg" width="20" height="20" align="top"> Repository Structure
 
@@ -83,15 +83,11 @@ snowpro-da-prep/
 ```
 
     </td>
-    <td width="45%" valign="top">
-      <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1000&auto=format&fit=crop" width="100%" />
+    <td style="width: 45%; vertical-align: top; border: none;">
+      <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1000&auto=format&fit=crop" style="max-width: 100%; height: auto;" />
     </td>
   </tr>
 </table>
-
-<table width="100%">
-  <tr>
-    <td width="55%" valign="top" style="padding-right:24px;">
 
 ### <img src="assets/weights.svg" width="20" height="20" align="top"> Domain Weights
 
@@ -106,9 +102,9 @@ Understanding how the exam is weighted tells you where to invest your time. Doma
 
 Domain 1 is listed last here intentionally. It is foundational knowledge you likely already have some exposure to. Treat it as a warmup, not a destination. Get through it efficiently and move into the heavier domains where your score is actually determined.
 
-<table width="100%">
-  <tr>
-    <td width="55%" valign="top" style="padding-right:24px;">
+<table style="width: 100%; border: none; border-collapse: collapse;">
+  <tr style="border: none;">
+    <td style="width: 55%; vertical-align: top; padding-right: 24px; border: none;">
 
 ### <img src="assets/tracker.svg" width="20" height="20" align="top"> Progress Tracker
 
@@ -149,13 +145,13 @@ Mark topics as you complete them. Do not mark something done until you can expla
 - [ ] Full Mock Exam
 
     </td>
-    <td width="45%" valign="top">
-      <img src="https://images.unsplash.com/photo-1698919585695-546e4a31fc8f?q=80&w=1331&auto=format&fit=crop" width="100%" height="650" />
+    <td style="width: 45%; vertical-align: top; border: none;">
+      <img src="https://images.unsplash.com/photo-1698919585695-546e4a31fc8f?q=80&w=1331&auto=format&fit=crop" style="max-width: 100%; height: auto;" />
     </td>
   </tr>
 </table>
 
-##   <img src="assets/brain.svg" alt="Snowflake" width="20" height="20" />  The Mindset
+## <img src="assets/brain.svg" alt="Snowflake" width="20" height="20" /> The Mindset
 
 >[!Note]
 > *"The exam rewards people who understand how Snowflake thinks, not people who memorized syntax."*
