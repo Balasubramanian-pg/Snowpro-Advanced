@@ -335,6 +335,17 @@ flowchart TD
     MV --> End
 ```
 - **Row-Level Security & Masking**: Policies evaluate after view inlining for regular/secure views. For materialized views, policies evaluate during refresh; MV stores already-filtered results.
+```mermaid
+flowchart TD
+    Start["Row-level security or masking policy attached to base tables"] --> Q1{"View type accessed?"}
+
+    Q1 --> |"Regular or Secure view"| A1["Policies evaluate after view inlining.<br>Applied dynamically at query time"]
+
+    Q1 --> |"Materialized view"| A2["Policies evaluate during refresh.<br>MV stores already-filtered or masked results.<br>No re-evaluation at query time"]
+
+    A1 --> End["End"]
+    A2 --> End
+```
 - **Metadata Protection**: Secure views redact `VIEW_DEFINITION` in system views for non-owners. Regular views expose definition to privilege holders. Materialized views expose definition and storage metrics.
 - **Data Sharing**: All view types can be shared via Snowflake Data Sharing. Secure views and materialized views are common patterns for governed data products.
 - **Exam Note**: Secure views cannot be converted to regular views without recreation. Materialized views require Enterprise edition. `SECURITY INVOKER` is not supported for secure views.
