@@ -268,6 +268,16 @@ flowchart TD
     A2 --> End["End - good performance"]
 ```
 - **Transaction Logging**: Frequent small DML operations generate high write-ahead log volume. Batch operations reduce logging overhead and improve throughput.
+```mermaid
+flowchart TD
+    Start["DML operations in procedure"] --> Q1{"Operation granularity?"}
+
+    Q1 --> |"Frequent small DML operations"| A1["High write-ahead log (WAL) volume.<br>Increases I/O and slows throughput"]
+    Q1 --> |"Batch operations"| A2["Reduces logging overhead.<br>Improves throughput"]
+
+    A1 --> End["Consider batching"]
+    A2 --> End["Good practice"]
+```
 - **Warehouse Concurrency**: Multiple concurrent `CALL` executions share warehouse compute. Multi-cluster warehouses distribute load; single warehouses queue calls under resource pressure.
 - **Exam Trap**: Candidates assume stored procedures improve query performance. SPs execute procedural logic; they do not optimize scanning or pruning. Performance depends on warehouse size, transaction batching, and set-based design.
 
