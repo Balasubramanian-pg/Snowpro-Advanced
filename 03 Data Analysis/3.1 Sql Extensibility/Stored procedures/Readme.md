@@ -241,6 +241,21 @@ flowchart TD
 
 # 16. Performance / Scalability Considerations
 - **Runtime Overhead**: Snowflake Scripting executes with minimal overhead. JavaScript/Python/Java incur sandbox initialization and serialization costs per invocation. Pre-warm runtimes for high-frequency calls.
+```mermaid
+flowchart TD
+    Start["Procedure Invoked"] --> Q1{"Language type?"}
+
+    Q1 --> |"Snowflake Scripting (SQL)"| A1["Minimal overhead.<br>No sandbox or serialization cost"]
+    Q1 --> |"JavaScript / Python / Java"| A2["Higher overhead per invocation:<br>• Sandbox initialization<br>• Serialization costs"]
+
+    A2 --> Q2{"Call frequency?"}
+    Q2 --> |"High-frequency calls"| A3["Benefit from pre-warmed runtimes"]
+    Q2 --> |"Low-frequency calls"| A4["Cold start penalty each time"]
+
+    A1 --> End["End"]
+    A3 --> End
+    A4 --> End
+```
 - **Set-Based vs Row-Based Logic**: Cursor iteration and row-by-row processing scale poorly on large datasets. Prefer bulk `INSERT`/`MERGE`, set transformations, or temporary staging tables.
 - **Transaction Logging**: Frequent small DML operations generate high write-ahead log volume. Batch operations reduce logging overhead and improve throughput.
 - **Warehouse Concurrency**: Multiple concurrent `CALL` executions share warehouse compute. Multi-cluster warehouses distribute load; single warehouses queue calls under resource pressure.
