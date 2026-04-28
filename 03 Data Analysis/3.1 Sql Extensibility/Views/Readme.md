@@ -148,6 +148,46 @@ Views do not define independent entities but expose logical or physical schemas 
   - Materialized views require Enterprise edition; query rewrite is automatic but not guaranteed.
   - `COPY GRANTS` preserves privileges on `OR REPLACE` for all view types.
 
+```mermaid
+flowchart TD
+    Start["Choose view type for query acceleration or abstraction"] --> Q1{"Goal?"}
+
+    Q1 --> |"Abstraction only, zero storage cost"| RegView["Regular or Secure View"]
+    Q1 --> |"Accelerate repeated queries"| MatView["Materialized View (Enterprise edition)"]
+
+    RegView --> Q2{"Security need?"}
+    Q2 --> |"Prevent query text exposure, DEFINER-only"| SecureView["Secure View"]
+    Q2 --> |"Expose definition to privilege holders"| RegularView["Regular View"]
+
+    SecureView --> Note1["Cannot use SECURITY INVOKER.<br>Compilation error if attempted"]
+    RegularView --> Note2["Default: SECURITY DEFINER.<br>INVOKER requires explicit syntax"]
+
+    Note1 --> EndA["End"]
+    Note2 --> EndA
+
+    MatView --> Q3{"Can optimizer rewrite query to use MV?"}
+    Q3 --> |"Check eligibility rules (all 4 must pass)"| RewriteCheck
+    Q3 --> |"No"| Fallback["Fall back to base table scan"]
+
+    RewriteCheck --> Rule1["Rule 1: Query references ALL MV base tables"]
+    Rule1 --> Rule2["Rule 2: Predicates compatible with MV filters"]
+    Rule2 --> Rule3["Rule 3: Aggregations derivable from MV pre-aggregations"]
+    Rule3 --> Rule4["Rule 4: MV freshness acceptable (e.g., not stale)"]
+
+    Rule4 --> |"All rules satisfied"| MVUse["Use MV micro-partitions for query acceleration"]
+    Rule4 --> |"Any rule fails"| Fallback
+
+    MVUse --> SecurityMV["Security note: MV reflects owner's data view at refresh time.<br>RLS on base tables does NOT dynamically apply to MV queries"]
+
+    SecurityMV --> Tradeoff["Tradeoff: Adds storage + refresh compute cost<br>vs. query-time acceleration"]
+
+    Tradeoff --> EndB["End"]
+    Fallback --> EndB
+
+    EndA --> ExamNote["Exam-Relevant Defaults Recap:<br>• Regular view default: SECURITY DEFINER<br>• Secure view cannot use INVOKER<br>• MV requires Enterprise edition; rewrite automatic but not guaranteed<br>• COPY GRANTS preserves privileges on OR REPLACE for all view types"]
+    EndB --> ExamNote
+```
+
 # 9. Transformations
 
 | Source Input | Target Output | Rule/Logic | Execution Meaning | Impact |
