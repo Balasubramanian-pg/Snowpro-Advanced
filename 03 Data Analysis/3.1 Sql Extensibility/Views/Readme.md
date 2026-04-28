@@ -360,6 +360,19 @@ flowchart TD
     MV --> End
 ```
 - **Data Sharing**: All view types can be shared via Snowflake Data Sharing. Secure views and materialized views are common patterns for governed data products.
+```mermaid
+flowchart TD
+    Start["Share data with consumer account"] --> Q1{"All view types supported?"}
+
+    Q1 --> |"Yes"| All["Regular views, secure views, materialized views can all be shared via Snowflake Data Sharing"]
+
+    All --> Q2{"Common patterns for governed data products?"}
+    Q2 --> |"Secure views"| Pattern1["Hide underlying table references from consumer"]
+    Q2 --> |"Materialized views"| Pattern2["Provide pre-computed, accelerated data without exposing base tables"]
+
+    Pattern1 --> End["End"]
+    Pattern2 --> End
+```
 - **Exam Note**: Secure views cannot be converted to regular views without recreation. Materialized views require Enterprise edition. `SECURITY INVOKER` is not supported for secure views.
 
 # 16. Performance / Scalability Considerations
