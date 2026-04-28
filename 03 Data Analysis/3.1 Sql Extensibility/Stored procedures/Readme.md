@@ -104,6 +104,56 @@ Stored procedures do not define persistent entities. They manage transient execu
 - **Transaction Scope**: DML supports explicit transaction blocks in Snowflake Scripting. DDL auto-commits immediately, invalidating active transactions. External language procedures default to auto-commit per statement unless explicit transaction APIs are used.
 - **Null Handling**: Inherits standard SQL null propagation. Procedures must explicitly handle null parameters or use `CALLED ON NULL INPUT` / `RETURNS NULL ON NULL INPUT`.
 
+```mermaid
+flowchart TD
+    Start[Start: Procedure Called] --> Q1{Execution Grain}
+    Q1 --> |1:1 per CALL, independent| Q2{Variable Scope?}
+
+    Q2 --> |Local to procedure| A1[Variables local to execution]
+    Q2 --> |Session-level needed| A2[Access via CURRENT_SESSION()<br>or explicit parameter passing]
+
+    A1 --> Q3{Cursor / RESULTSET}
+    A2 --> Q3
+
+    Q3 --> |Created| C1[Cursor/RESULTSET opened]
+    C1 --> Q4{Explicitly consumed<br>or closed?}
+    Q4 --> |Yes| C2[Resources released promptly]
+    Q4 --> |No| C3[Resources released at procedure termination,<br>but may impact intermediate memory]
+
+    C2 --> Q5{Transaction Type}
+    C3 --> Q5
+
+    Q5 --> |DML| T1{Explicit transaction<br>block? (Snowflake Scripting)}
+    T1 --> |Yes| T2[Can COMMIT/ROLLBACK within block]
+    T1 --> |No| T3[Auto-commit per statement<br>(default for external languages)]
+
+    Q5 --> |DDL| T4[Auto-commit immediately.<br>Invalidates any active transaction]
+
+    T2 --> Q6{Null Handling}
+    T3 --> Q6
+    T4 --> Q6
+
+    Q6 --> |Parameter may be null| N1{Procedure defined with?}
+    N1 --> |CALLED ON NULL INPUT| N2[Procedure executes,<br>parameter value is NULL]
+    N1 --> |RETURNS NULL ON NULL INPUT| N3[Procedure returns NULL immediately<br>without executing body]
+    N1 --> |Default (CALLED ON NULL INPUT)| N2
+
+    Q6 --> |Standard SQL null propagation| N4[Nulls propagate through expressions.<br>Procedure must explicitly handle nulls<br>if not using special clauses]
+
+    N2 --> End[End]
+    N3 --> End
+    N4 --> End
+
+    style Start fill:#e8f5e9
+    style End fill:#ffebee
+    style Q1 fill:#fff9c4
+    style Q2 fill:#fff9c4
+    style Q3 fill:#fff9c4
+    style Q4 fill:#fff9c4
+    style Q5 fill:#fff9c4
+    style Q6 fill:#fff9c4
+    style N1 fill:#e1f5fe
+```
 # 8. Business Logic (Execution Logic)
 - **Privilege Execution Model**: `EXECUTE AS CALLER` (default) validates object access using the caller's role at each statement execution. `EXECUTE AS OWNER` uses the procedure creator's role, enabling controlled privilege elevation. Exam trap: Candidates often assume `OWNER` grants blanket access; it only covers objects the creator already possesses.
 - **Control Flow & Error Handling**: `TRY...CATCH` blocks capture runtime exceptions. Unhandled exceptions trigger automatic rollback of uncommitted DML within the procedure. `SQLCODE`/`SQLERRM` (Scripting) or language-native exceptions provide diagnostic context.
