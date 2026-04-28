@@ -257,6 +257,16 @@ flowchart TD
     A4 --> End
 ```
 - **Set-Based vs Row-Based Logic**: Cursor iteration and row-by-row processing scale poorly on large datasets. Prefer bulk `INSERT`/`MERGE`, set transformations, or temporary staging tables.
+```mermaid
+flowchart TD
+    Start["Processing data in procedure"] --> Q1{"Method choice?"}
+
+    Q1 --> |"Cursor iteration / row-by-row"| A1["Scales poorly on large datasets.<br>High overhead, slow"]
+    Q1 --> |"Set-based operations"| A2["Preferred for performance.<br>Use bulk INSERT or MERGE<br>or set transformations<br>or temporary staging tables"]
+
+    A1 --> End["End - avoid for large data"]
+    A2 --> End["End - good performance"]
+```
 - **Transaction Logging**: Frequent small DML operations generate high write-ahead log volume. Batch operations reduce logging overhead and improve throughput.
 - **Warehouse Concurrency**: Multiple concurrent `CALL` executions share warehouse compute. Multi-cluster warehouses distribute load; single warehouses queue calls under resource pressure.
 - **Exam Trap**: Candidates assume stored procedures improve query performance. SPs execute procedural logic; they do not optimize scanning or pruning. Performance depends on warehouse size, transaction batching, and set-based design.
