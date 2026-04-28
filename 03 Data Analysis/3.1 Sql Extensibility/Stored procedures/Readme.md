@@ -41,6 +41,50 @@ flowchart TD
 6. **Result Return**: Scalar, tabular, or `RESULTSET` output serialized and returned. `CALL` cannot be embedded in `SELECT`. Execution completes; sandbox/resources released.
 
 Grain: 1:1 per invocation. State does not persist across calls unless explicitly written to permanent/temporary tables.
+```mermaid
+flowchart TD
+    A[Invocation & Parsing] --> A1[Compiler validates CALL syntax]
+    A1 --> A2[Resolves procedure metadata]
+    A2 --> A3[Checks EXECUTE privilege]
+
+    A3 --> B[Context Binding]
+    B --> B1[Capture session role, warehouse,<br>account parameters]
+    B1 --> B2[EXECUTE AS determines<br>privilege scope for statements]
+
+    B2 --> C{Runtime Initialization}
+
+    C --> |Scripting| C1[Execution plan compiled inline]
+    C --> |External Languages| C2[Sandbox allocated<br>Packages loaded<br>Memory limits enforced]
+
+    C1 --> D[Procedural Execution]
+    C2 --> D
+
+    D --> D1[Statements execute sequentially]
+    D1 --> D2[Control flow: IF, FOR, WHILE, TRY/CATCH<br>directs logic]
+    D2 --> D3[DML applies to target tables]
+
+    D3 --> E[Transaction Management]
+    E --> E1{DML vs DDL?}
+    E1 --> |DML| E2[Follows standard transaction rules:<br>explicit BEGIN/COMMIT in Scripting,<br>auto-commit otherwise]
+    E1 --> |DDL| E3[Auto-commits immediately,<br>breaking outer transaction scope]
+
+    E2 --> F[Result Return]
+    E3 --> F
+
+    F --> F1[Output serialized:<br>Scalar, tabular, or RESULTSET]
+    F1 --> F2[CALL cannot be embedded in SELECT]
+    F2 --> F3[Execution completes<br>Sandbox/resources released]
+
+    F3 --> G[Grain: 1:1 per invocation.<br>State does not persist across calls<br>unless written to permanent/temporary tables]
+
+    style A fill:#e1f5fe
+    style B fill:#e1f5fe
+    style C fill:#fff9c4
+    style D fill:#f3e5f5
+    style E fill:#ffebee
+    style F fill:#e8f5e9
+    style G fill:#fce4ec
+```
 
 # 6. Logical Breakdown
 
