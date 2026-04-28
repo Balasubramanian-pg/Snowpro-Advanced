@@ -290,6 +290,18 @@ flowchart TD
     A2 --> End["Potential bottleneck"]
 ```
 - **Exam Trap**: Candidates assume stored procedures improve query performance. SPs execute procedural logic; they do not optimize scanning or pruning. Performance depends on warehouse size, transaction batching, and set-based design.
+```mermaid
+flowchart TD
+    Start["Candidate assumption"] --> Trap["Stored procedures improve query performance?"]
+
+    Trap --> |"False assumption"| Truth["Stored procedures execute procedural logic.<br>They do NOT optimize:<br>• Scanning<br>• Pruning"]
+
+    Truth --> Factors["Actual performance depends on:<br>• Warehouse size<br>• Transaction batching<br>• Set‑based design"]
+
+    Factors --> Advice["Do not use SPs as a performance tool.<br>Use for orchestration, not speed."]
+
+    Start --> Trap
+```
 
 # 17. Assumptions & Constraints
 - Stored procedures are stateless across invocations. Persistent state requires explicit table writes or session parameter passing.
