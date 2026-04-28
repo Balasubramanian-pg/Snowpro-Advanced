@@ -254,6 +254,19 @@ flowchart TD
     A2 --> End
 ```
 - **Refresh Monitoring (MV Only)**: `MATERIALIZED_VIEW_REFRESH_HISTORY` shows refresh duration, rows processed, and status.
+```mermaid
+flowchart TD
+    Start["Materialized View refresh occurs"] --> Step1["Query MATERIALIZED_VIEW_REFRESH_HISTORY"]
+
+    Step1 --> Q1{"What to monitor?"}
+    Q1 --> |"Refresh duration"| A1["Shows start and end time"]
+    Q1 --> |"Rows processed"| A2["Number of rows changed in base tables"]
+    Q1 --> |"Status"| A3["Success or failure with error details"]
+
+    A1 --> End["End"]
+    A2 --> End
+    A3 --> End
+```
 - **Cost Attribution**: 
   - Regular/secure views: Compute cost to querying warehouse; zero storage cost.
   - Materialized views: Compute cost for refresh (serverless pool) + storage cost for micro-partitions + reduced query compute when rewrite succeeds.
