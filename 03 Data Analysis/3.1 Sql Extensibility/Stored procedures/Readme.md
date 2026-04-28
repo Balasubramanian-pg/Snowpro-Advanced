@@ -279,6 +279,16 @@ flowchart TD
     A2 --> End["Good practice"]
 ```
 - **Warehouse Concurrency**: Multiple concurrent `CALL` executions share warehouse compute. Multi-cluster warehouses distribute load; single warehouses queue calls under resource pressure.
+```mermaid
+flowchart TD
+    Start["Multiple concurrent CALL executions"] --> Q1{"Warehouse configuration?"}
+
+    Q1 --> |"Multi-cluster warehouse"| A1["Load distributed across clusters.<br>Good concurrency"]
+    Q1 --> |"Single-cluster warehouse"| A2["Calls queue under resource pressure.<br>May increase wait time"]
+
+    A1 --> End["Scales well"]
+    A2 --> End["Potential bottleneck"]
+```
 - **Exam Trap**: Candidates assume stored procedures improve query performance. SPs execute procedural logic; they do not optimize scanning or pruning. Performance depends on warehouse size, transaction batching, and set-based design.
 
 # 17. Assumptions & Constraints
