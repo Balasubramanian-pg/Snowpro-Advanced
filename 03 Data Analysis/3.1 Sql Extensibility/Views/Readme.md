@@ -270,6 +270,24 @@ flowchart TD
 - **Cost Attribution**: 
   - Regular/secure views: Compute cost to querying warehouse; zero storage cost.
   - Materialized views: Compute cost for refresh (serverless pool) + storage cost for micro-partitions + reduced query compute when rewrite succeeds.
+```mermaid
+flowchart TD
+    Start["Choose view type"] --> Q1{"Type?"}
+
+    Q1 --> |"Regular or Secure View"| RegCost["Compute cost: charged to querying warehouse.<br>Storage cost: zero"]
+    Q1 --> |"Materialized View"| MVCost["Cost components:"]
+
+    MVCost --> Cost1["Compute cost for refresh (serverless pool)"]
+    MVCost --> Cost2["Storage cost for micro-partitions"]
+    MVCost --> Cost3["Reduced query compute when rewrite succeeds"]
+
+    Cost1 --> Compare["Tradeoff: MV adds refresh + storage costs<br>but may lower query compute cost"]
+    Cost2 --> Compare
+    Cost3 --> Compare
+
+    RegCost --> End["End"]
+    Compare --> End
+```
 - **Rewrite Hit Rate**: Custom query against `QUERY_HISTORY` counting `MaterializedViewRewrite` events measures MV acceleration effectiveness.
 
 # 14. Failure Handling & Recovery
