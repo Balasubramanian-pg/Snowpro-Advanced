@@ -90,6 +90,29 @@ flowchart TD
 
 **Key Difference**: Regular/secure views defer all computation to query time. Materialized views shift computation to refresh time, trading storage and background compute for query-time acceleration.
 
+```mermaid
+flowchart TD
+    Start["Query references base tables or MV directly"] --> Step1["Query Parsing"]
+
+    Step1 --> Step2["Rewrite Evaluation: Optimizer checks MV eligibility"]
+    Step2 --> Q1{"MV eligible?"}
+    Q1 --> |"No (pattern mismatch, stale, cost high)"| A1["Fall back to base table scan.<br>No MV acceleration"]
+
+    Q1 --> |"Yes"| Step3["Plan Substitution: MV micro-partitions replace base table scan"]
+
+    Step3 --> Step4["Result Assembly: Data read from MV storage.<br>Residual filters or aggregations applied"]
+
+    Step4 --> Step5["Return result to user"]
+
+    A1 --> Step5
+
+    Step5 --> Background["Background Refresh Process:<br>Change streams detect base table modifications.<br>Incremental merge updates MV storage asynchronously"]
+
+    Background --> KeyDiff["Key Difference from Regular Views:<br>Regular: computation deferred to query time.<br>Materialized: computation shifted to refresh time.<br>Trades storage + background compute for query acceleration"]
+
+    KeyDiff --> End["End"]
+```
+
 # 6. Logical Breakdown
 
 | Component | Regular View | Secure View | Materialized View |
