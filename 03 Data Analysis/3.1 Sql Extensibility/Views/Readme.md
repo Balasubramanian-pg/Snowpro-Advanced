@@ -289,7 +289,18 @@ flowchart TD
     Compare --> End
 ```
 - **Rewrite Hit Rate**: Custom query against `QUERY_HISTORY` counting `MaterializedViewRewrite` events measures MV acceleration effectiveness.
+```mermaid
+flowchart TD
+    Start["Measure MV acceleration effectiveness"] --> Step1["Query QUERY_HISTORY"]
 
+    Step1 --> Step2["Count events where query plan contains MaterializedViewRewrite node"]
+
+    Step2 --> Formula["Rewrite Hit Rate =<br> (MV rewrite successes) / (total eligible queries) * 100%"]
+
+    Formula --> Advice["Custom monitoring:<br>Create query to count MaterializedViewRewrite events over time window.<br>Monitor trend to assess MV usefulness."]
+
+    Advice --> End["End"]
+```
 # 14. Failure Handling & Recovery
 
 | Failure Scenario | Regular View | Secure View | Materialized View |
