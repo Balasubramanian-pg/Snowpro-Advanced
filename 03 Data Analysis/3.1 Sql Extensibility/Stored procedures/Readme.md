@@ -151,6 +151,39 @@ flowchart TD
 - **Invocation Constraint**: Stored procedures cannot be called within `SELECT`, `WHERE`, or `JOIN` clauses. They must be invoked via standalone `CALL` statement or assigned to a variable via `CALL ... INTO`.
 - **Exam-Relevant Defaults**: `EXECUTE AS CALLER` is default. `LANGUAGE` defaults to `SQL` for Scripting or specified external language. DDL auto-commit breaks transaction atomicity. `RESULTSET` must be consumed or closed explicitly in external languages.
 
+```mermaid
+flowchart TD
+    Start["Start: Procedure Call"] --> Q1{"Privilege Execution Model"}
+
+    Q1 --> |"EXECUTE AS CALLER (default)"| A1["Validates object access using caller's role<br>at each statement execution"]
+    Q1 --> |"EXECUTE AS OWNER"| A2["Uses procedure creator's role<br>enables controlled privilege elevation"]
+    A2 --> Note1["Note: OWNER only covers objects<br>the creator already possesses"]
+
+    A1 --> Q2{"Error Handling"}
+    Note1 --> Q2
+
+    Q2 --> |"TRY...CATCH block present"| A3["Captures runtime exceptions"]
+    Q2 --> |"Unhandled exception"| A4["Automatic rollback of uncommitted DML within procedure"]
+
+    A3 --> A5["Use SQLCODE or SQLERRM (Scripting)<br>or language-native exceptions for diagnostics"]
+    A4 --> A5
+
+    A5 --> Q3{"DDL vs DML Transaction Behavior"}
+
+    Q3 --> |"DDL statement (CREATE, ALTER, DROP)"| A6["Auto-commit immediately.<br>Cannot be wrapped in BEGIN...ROLLBACK"]
+    Q3 --> |"Mixing DDL and DML in single transaction"| A7["Requires careful sequencing<br>or acceptance of partial commit states"]
+
+    A6 --> Q4{"Invocation Constraint"}
+    A7 --> Q4
+
+    Q4 --> |"Attempt to use in SELECT, WHERE, or JOIN"| A8["Not allowed - syntax error"]
+    Q4 --> |"Valid invocation"| A9["Standalone CALL statement<br>or CALL ... INTO (assign to variable)"]
+
+    A8 --> End["End"]
+    A9 --> End
+
+    End --> ExamNote["Exam-Relevant Defaults:<br>• EXECUTE AS CALLER is default<br>• LANGUAGE defaults to SQL<br>• DDL auto-commit breaks transaction atomicity<br>• RESULTSET must be consumed or closed explicitly in external languages"]
+```
 # 9. Transformations
 
 | Source Input | Target Output | Rule/Logic | Execution Meaning | Impact |
