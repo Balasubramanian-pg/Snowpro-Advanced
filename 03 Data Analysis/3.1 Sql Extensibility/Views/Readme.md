@@ -226,6 +226,21 @@ flowchart TD
 
 # 13. Observability
 - **Query History**: `QUERY_HISTORY` shows compilation and execution time. MV rewrite visible via `MaterializedViewRewrite` node in `EXPLAIN`.
+```mermaid
+flowchart TD
+    Start["Query executed"] --> Step1["Query appears in QUERY_HISTORY view"]
+
+    Step1 --> Q1{"What to examine?"}
+    Q1 --> |"Timing"| A1["Shows compilation time + execution time"]
+    Q1 --> |"Execution plan"| A2["Use EXPLAIN to inspect"]
+    A2 --> Q2{"MV rewrite present?"}
+    Q2 --> |"Yes"| A3["MaterializedViewRewrite node visible in EXPLAIN output"]
+    Q2 --> |"No"| A4["No MV acceleration applied"]
+
+    A1 --> End["End"]
+    A3 --> End
+    A4 --> End
+```
 - **Access Tracking**: `ACCESS_HISTORY` logs view consumption. Secure views redact underlying table references for non-owners.
 - **Refresh Monitoring (MV Only)**: `MATERIALIZED_VIEW_REFRESH_HISTORY` shows refresh duration, rows processed, and status.
 - **Cost Attribution**: 
