@@ -316,6 +316,24 @@ flowchart TD
   - Regular views: Caller needs `SELECT` on view; base table privileges checked based on `SECURITY` flag.
   - Secure views: Caller needs `SELECT` on view only; base table privileges validated against owner role.
   - Materialized views: Caller needs `SELECT` on MV; refresh executes with owner privileges.
+```mermaid
+flowchart TD
+    Start["User accesses a view"] --> Q1{"View type?"}
+
+    Q1 --> |"Regular view"| Reg["Caller needs SELECT privilege on view"]
+    Reg --> Q2{"SECURITY flag?"}
+    Q2 --> |"DEFINER (default)"| RegA["Base table privileges checked against view owner's role"]
+    Q2 --> |"INVOKER"| RegB["Base table privileges checked against caller's role"]
+
+    Q1 --> |"Secure view"| Sec["Caller needs SELECT privilege on view only.<br>Base table privileges validated against owner role"]
+
+    Q1 --> |"Materialized view"| MV["Caller needs SELECT privilege on MV.<br>Refresh executes with owner privileges"]
+
+    RegA --> End["End"]
+    RegB --> End
+    Sec --> End
+    MV --> End
+```
 - **Row-Level Security & Masking**: Policies evaluate after view inlining for regular/secure views. For materialized views, policies evaluate during refresh; MV stores already-filtered results.
 - **Metadata Protection**: Secure views redact `VIEW_DEFINITION` in system views for non-owners. Regular views expose definition to privilege holders. Materialized views expose definition and storage metrics.
 - **Data Sharing**: All view types can be shared via Snowflake Data Sharing. Secure views and materialized views are common patterns for governed data products.
