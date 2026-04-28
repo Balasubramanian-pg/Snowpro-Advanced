@@ -110,7 +110,7 @@ flowchart TD
     Q1 --> |1:1 per CALL, independent| Q2{Variable Scope?}
 
     Q2 --> |Local to procedure| A1[Variables local to execution]
-    Q2 --> |Session-level needed| A2[Access via CURRENT_SESSION()<br>or explicit parameter passing]
+    Q2 --> |Session-level needed| A2["Access via: CURRENT_SESSION()<br>or explicit parameter passing"]
 
     A1 --> Q3{Cursor / RESULTSET}
     A2 --> Q3
