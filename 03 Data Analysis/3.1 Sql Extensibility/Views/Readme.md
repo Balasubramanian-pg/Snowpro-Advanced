@@ -347,6 +347,18 @@ flowchart TD
     A2 --> End
 ```
 - **Metadata Protection**: Secure views redact `VIEW_DEFINITION` in system views for non-owners. Regular views expose definition to privilege holders. Materialized views expose definition and storage metrics.
+```mermaid
+flowchart TD
+    Start["Who can see view definition and metadata?"] --> Q1{"View type?"}
+
+    Q1 --> |"Regular view"| Reg["VIEW_DEFINITION exposed to privilege holders"]
+    Q1 --> |"Secure view"| Sec["VIEW_DEFINITION redacted in system views for non-owners.<br>Owners see full definition"]
+    Q1 --> |"Materialized view"| MV["VIEW_DEFINITION and storage metrics exposed.<br>Micro-partition size, row count, etc."]
+
+    Reg --> End["End"]
+    Sec --> End
+    MV --> End
+```
 - **Data Sharing**: All view types can be shared via Snowflake Data Sharing. Secure views and materialized views are common patterns for governed data products.
 - **Exam Note**: Secure views cannot be converted to regular views without recreation. Materialized views require Enterprise edition. `SECURITY INVOKER` is not supported for secure views.
 
