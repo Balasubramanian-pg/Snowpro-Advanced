@@ -56,6 +56,31 @@ flowchart TD
 5. **Execution**: Base tables scanned; result computed and returned.
 6. **Caching**: Result cache eligibility evaluated on final compiled query text.
 
+```mermaid
+flowchart TD
+    Start["Query references a view"] --> Step1["Name Resolution: Compiler validates view existence and caller privileges"]
+
+    Step1 --> Q1{"Privileges valid?"}
+    Q1 --> |No| Fail["Query fails with insufficient privilege"]
+    Q1 --> |Yes| Step2["Definition Retrieval: Metadata service fetches stored SELECT statement"]
+
+    Step2 --> Q2{"View type?"}
+    Q2 --> |Regular view| Step3a["Plain SELECT statement retrieved"]
+    Q2 --> |Secure view| Step3b["Encrypted definition retrieved,<br>decrypted internally"]
+
+    Step3a --> Step4["Query Inlining: View SQL substituted into outer query.<br>Predicates merged"]
+    Step3b --> Step4
+
+    Step4 --> Step5["Optimization: Optimizer applies pushdown,<br>join reordering, pruning"]
+
+    Step5 --> Step6["Execution: Base tables scanned,<br>result computed and returned"]
+
+    Step6 --> Step7["Caching: Result cache eligibility evaluated<br>on final compiled query text"]
+
+    Step7 --> End["End"]
+
+    Fail --> End
+```
 **Materialized View Execution:**
 1. **Query Parsing**: Incoming query references base tables or MV directly.
 2. **Rewrite Evaluation**: Optimizer checks MV eligibility: pattern match, freshness, cost.
