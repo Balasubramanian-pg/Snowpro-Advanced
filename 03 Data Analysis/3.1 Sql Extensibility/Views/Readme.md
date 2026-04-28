@@ -242,6 +242,17 @@ flowchart TD
     A4 --> End
 ```
 - **Access Tracking**: `ACCESS_HISTORY` logs view consumption. Secure views redact underlying table references for non-owners.
+```mermaid
+flowchart TD
+    Start["View accessed by query"] --> Step1["ACCESS_HISTORY logs view consumption"]
+
+    Step1 --> Q1{"View type?"}
+    Q1 --> |"Regular view"| A1["Underlying table references visible to users with sufficient privileges"]
+    Q1 --> |"Secure view"| A2["Underlying table references redacted for non-owners.<br>Owners see full lineage"]
+
+    A1 --> End["End"]
+    A2 --> End
+```
 - **Refresh Monitoring (MV Only)**: `MATERIALIZED_VIEW_REFRESH_HISTORY` shows refresh duration, rows processed, and status.
 - **Cost Attribution**: 
   - Regular/secure views: Compute cost to querying warehouse; zero storage cost.
