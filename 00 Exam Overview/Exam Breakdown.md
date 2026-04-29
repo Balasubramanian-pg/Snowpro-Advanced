@@ -4,13 +4,13 @@
 
 | Property | Detail |
 |----------|--------|
-| **Exam Name** | SnowPro Advanced: Data Analyst |
-| **Prerequisite** | SnowPro Core (must be active) |
-| **Format** | Multiple choice + scenario-based questions |
-| **Duration** | 115 minutes |
-| **Passing Score** | ~750 out of 1000 (scaled scoring) |
-| **Delivery** | Online proctored (Examity) or testing center |
-| **Validity** | 2 years from certification date |
+| [**Exam Name**](Exam Format/Exam Name.md) | SnowPro Advanced: Data Analyst |
+| [**Prerequisite**](Exam Format/Prerequisite.md) | SnowPro Core (must be active) |
+| [**Format**](Exam Format/Format.md) | Multiple choice + scenario-based questions |
+| [**Duration**](Exam Format/Duration.md) | 115 minutes |
+| [**Passing Score**](Exam Format/Passing Score.md) | ~750 out of 1000 (scaled scoring) |
+| [**Delivery**](Exam Format/Delivery.md) | Online proctored (Examity) or testing center |
+| [**Validity**](Exam Format/Validity.md) | 2 years from certification date |
 
 ---
 
