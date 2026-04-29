@@ -9,11 +9,11 @@ This evaluation dictates the architectural design of the pipeline: whether trans
 
 | Feature / Pattern | Type | Purpose | Inputs | Execution Phase |
 | :--- | :--- | :--- | :--- | :--- |
-| `INFER_SCHEMA` | Table Function | Detects column names and data types from raw files. | Staged files | Pre-ingestion (Discovery) |
-| `VALIDATION_MODE` | COPY Parameter | Tests parsing rules and discovers malformed records without loading. | `COPY INTO` Command | Pre-ingestion (Discovery) |
-| Approximation Functions | SQL Functions | Profiles cardinality and distribution rapidly on massive datasets. | Raw / Staged Data | Pre-ingestion / Profiling |
-| `COPY INTO ... SELECT` | DML Pattern | Applies lightweight, row-by-row transformations during load. | Stage | Load time |
-| Post-Load ELT | DDL / DML | Applies complex relational transformations (Joins, Aggregations, Flattening). | Raw Tables | Post-ingestion |
+| [`INFER_SCHEMA`](Feature Summary/INFER_SCHEMA.md) | Table Function | Detects column names and data types from raw files. | Staged files | Pre-ingestion (Discovery) |
+| [`VALIDATION_MODE`](Parameters  Configuration/VALIDATION_MODE.md) | COPY Parameter | Tests parsing rules and discovers malformed records without loading. | `COPY INTO` Command | Pre-ingestion (Discovery) |
+| [Approximation Functions](Feature Summary/Approximation Functions.md) | SQL Functions | Profiles cardinality and distribution rapidly on massive datasets. | Raw / Staged Data | Pre-ingestion / Profiling |
+| [`COPY INTO ... SELECT`](Feature Summary/COPY INTO ... SELECT.md) | DML Pattern | Applies lightweight, row-by-row transformations during load. | Stage | Load time |
+| [Post-Load ELT](Feature Summary/Post-Load ELT.md) | DDL / DML | Applies complex relational transformations (Joins, Aggregations, Flattening). | Raw Tables | Post-ingestion |
 
 # 4. Architecture
 The evaluation process acts as a decision gate, routing data through different transformation vehicles based on structural complexity and business logic requirements discovered during profiling.
@@ -97,9 +97,9 @@ Key parameters evaluated and tuned during discovery:
 
 | Parameter | Type | Purpose |
 | :--- | :--- | :--- |
-| `VALIDATION_MODE` | String | Values: `RETURN_n_ROWS`, `RETURN_ERRORS`. Evaluates parsing rules without altering table state. |
-| `ON_ERROR` | String | Determines pipeline resilience based on discovery (e.g., `SKIP_FILE`, `CONTINUE`, `ABORT_STATEMENT`). |
-| `STRIP_OUTER_ARRAY`| Boolean | Evaluated if discovery reveals JSON files are wrapped entirely in `[ ]` brackets. |
+| [`VALIDATION_MODE`](Parameters  Configuration/VALIDATION_MODE.md) | String | Values: `RETURN_n_ROWS`, `RETURN_ERRORS`. Evaluates parsing rules without altering table state. |
+| [`ON_ERROR`](Parameters  Configuration/ON_ERROR.md) | String | Determines pipeline resilience based on discovery (e.g., `SKIP_FILE`, `CONTINUE`, `ABORT_STATEMENT`). |
+| [`STRIP_OUTER_ARRAY`](Parameters  Configuration/STRIP_OUTER_ARRAY.md)| Boolean | Evaluated if discovery reveals JSON files are wrapped entirely in `[ ]` brackets. |
 
 # 11. APIs / Interfaces
 
