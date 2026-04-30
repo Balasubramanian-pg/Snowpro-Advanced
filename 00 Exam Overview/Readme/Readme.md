@@ -12,11 +12,11 @@ Also: if you're not executing queries in a Snowflake account while studying, you
 
 | Domain | Weight | What It Actually Tests |
 |--------|--------|----------------------|
-| Data Ingestion & Preparation | ~20% | Can you stage, validate, and load data without breaking governance or performance? |
-| Data Transformation & Modeling | ~30% | Can you write correct, efficient SQL that produces the right grain and handles edge cases? |
-| Data Analysis & Visualization | ~25% | Can you derive insights, use window functions correctly, and build dashboards that don't lie? |
-| Security, Governance & Performance | ~15% | Do you understand RBAC, policies, pruning, and caching well enough to avoid costly mistakes? |
-| Snowflake Architecture & Services | ~10% | Do you know how the pieces fit together well enough to troubleshoot when things go wrong? |
+| [Data Ingestion & Preparation](Exam Structure Reference (Know This Cold)/Data Ingestion & Preparation.md) | ~20% | Can you stage, validate, and load data without breaking governance or performance? |
+| [Data Transformation & Modeling](Exam Structure Reference (Know This Cold)/Data Transformation & Modeling.md) | ~30% | Can you write correct, efficient SQL that produces the right grain and handles edge cases? |
+| [Data Analysis & Visualization](Exam Structure Reference (Know This Cold)/Data Analysis & Visualization.md) | ~25% | Can you derive insights, use window functions correctly, and build dashboards that don't lie? |
+| [Security, Governance & Performance](Exam Structure Reference (Know This Cold)/Security, Governance & Performance.md) | ~15% | Do you understand RBAC, policies, pruning, and caching well enough to avoid costly mistakes? |
+| [Snowflake Architecture & Services](Exam Structure Reference (Know This Cold)/Snowflake Architecture & Services.md) | ~10% | Do you know how the pieces fit together well enough to troubleshoot when things go wrong? |
 
 The exam is scenario-based. You won't be asked "what does COPY INTO do?" You'll be given a broken pipeline and asked which change fixes it. Study accordingly.
 
@@ -30,26 +30,26 @@ The exam is scenario-based. You won't be asked "what does COPY INTO do?" You'll 
 
 | Day | Focus | Action Items | Success Check |
 |-----|-------|-------------|---------------|
-| 1 | Account structure, virtual warehouses, storage/compute decoupling | Diagram the architecture from memory; explain to someone (or rubber duck) why this matters for cost and performance | Can you explain why resizing a warehouse doesn't move data? |
-| 2 | RBAC fundamentals: roles, privileges, hierarchy | Create 3 roles in a dev account; grant/revoke privileges; test access as different roles | Can you predict what a user can see after a specific grant chain? |
-| 3 | Basic SELECT, filtering, NULL handling | Write 10 queries that intentionally misuse `= NULL`, `AND`/`OR` precedence, case sensitivity; observe results | Can you rewrite a broken filter without running it first? |
-| 4 | JOINs: INNER, LEFT, RIGHT, FULL | Build a small dataset with intentional mismatches; test each JOIN type; document when rows disappear | Can you explain why a LEFT JOIN + WHERE on right table becomes INNER? |
-| 5 | Aggregation: GROUP BY, COUNT variants, HAVING | Write queries that mix COUNT(*), COUNT(col), COUNT(DISTINCT); break them with NULLs; fix them | Can you predict aggregation results before executing? |
-| 6 | Date/time functions, string manipulation | Convert timezones, truncate dates, parse strings; test edge cases (leap years, DST) | Can you write a query that groups by week starting Monday, not Sunday? |
-| 7 | Review + mini-assessment | Re-run all Week 1 queries from memory; explain each choice aloud | If you hesitate on >20%, repeat the weak areas before moving on |
+| [1](Week 1 (Days 1–7) Snowflake Architecture & SQL Refresher/1.md) | Account structure, virtual warehouses, storage/compute decoupling | Diagram the architecture from memory; explain to someone (or rubber duck) why this matters for cost and performance | Can you explain why resizing a warehouse doesn't move data? |
+| [2](Week 1 (Days 1–7) Snowflake Architecture & SQL Refresher/2.md) | RBAC fundamentals: roles, privileges, hierarchy | Create 3 roles in a dev account; grant/revoke privileges; test access as different roles | Can you predict what a user can see after a specific grant chain? |
+| [3](Week 1 (Days 1–7) Snowflake Architecture & SQL Refresher/3.md) | Basic SELECT, filtering, NULL handling | Write 10 queries that intentionally misuse `= NULL`, `AND`/`OR` precedence, case sensitivity; observe results | Can you rewrite a broken filter without running it first? |
+| [4](Week 1 (Days 1–7) Snowflake Architecture & SQL Refresher/4.md) | JOINs: INNER, LEFT, RIGHT, FULL | Build a small dataset with intentional mismatches; test each JOIN type; document when rows disappear | Can you explain why a LEFT JOIN + WHERE on right table becomes INNER? |
+| [5](Week 1 (Days 1–7) Snowflake Architecture & SQL Refresher/5.md) | Aggregation: GROUP BY, COUNT variants, HAVING | Write queries that mix COUNT(*), COUNT(col), COUNT(DISTINCT); break them with NULLs; fix them | Can you predict aggregation results before executing? |
+| [6](Week 1 (Days 1–7) Snowflake Architecture & SQL Refresher/6.md) | Date/time functions, string manipulation | Convert timezones, truncate dates, parse strings; test edge cases (leap years, DST) | Can you write a query that groups by week starting Monday, not Sunday? |
+| [7](Week 1 (Days 1–7) Snowflake Architecture & SQL Refresher/7.md) | Review + mini-assessment | Re-run all Week 1 queries from memory; explain each choice aloud | If you hesitate on >20%, repeat the weak areas before moving on |
 
 ### Week 2 (Days 8–15): Data Loading & Semi-Structured Data
 **Daily commitment**: 1.5 hours weekdays, 4 hours weekend
 
 | Day | Focus | Action Items | Success Check |
 |-----|-------|-------------|---------------|
-| 8 | Internal vs external stages, PUT/GET, COPY INTO <table> | Load a CSV into a stage; copy to table with different ON_ERROR settings; observe load history | Can you recover from a failed load without reloading everything? |
-| 9 | File formats: CSV, JSON, Parquet; NULL_IF, SKIP_HEADER, etc. | Load the same data in 3 formats; compare parsing behavior, performance, storage | Can you choose the right format for a given downstream use case? |
-| 10 | VARIANT basics: path extraction, casting, FLATTEN | Parse nested JSON; extract arrays; handle missing keys safely with TRY_CAST | Can you write a query that won't fail if a JSON key is missing? |
-| 11 | INFER_SCHEMA vs explicit schema; validation patterns | Use INFER_SCHEMA on a messy file; compare to hand-defined schema; document trade-offs | Can you explain when to use each approach in production? |
-| 12 | COPY INTO <location> for export; compression, partitioning | Export a table to external stage in Parquet + SNAPPY; verify file structure downstream | Can you design an export that a Spark job can consume without transformation? |
-| 13 | Error handling: load history, validation queries, quarantine patterns | Intentionally break a load; trace errors through SYSTEM$LOAD_HISTORY; build a simple quarantine table | Can you isolate bad rows without stopping the entire pipeline? |
-| 14–15 | Phase 1 review + practice questions | Rebuild Week 1–2 queries from scratch; answer 20 scenario-based questions (create your own if needed) | Can you explain *why* each answer is correct, not just which one? |
+| [8](Week 2 (Days 8–15) Data Loading & Semi-Structured Data/8.md) | Internal vs external stages, PUT/GET, COPY INTO <table> | Load a CSV into a stage; copy to table with different ON_ERROR settings; observe load history | Can you recover from a failed load without reloading everything? |
+| [9](Week 2 (Days 8–15) Data Loading & Semi-Structured Data/9.md) | File formats: CSV, JSON, Parquet; NULL_IF, SKIP_HEADER, etc. | Load the same data in 3 formats; compare parsing behavior, performance, storage | Can you choose the right format for a given downstream use case? |
+| [10](Week 2 (Days 8–15) Data Loading & Semi-Structured Data/10.md) | VARIANT basics: path extraction, casting, FLATTEN | Parse nested JSON; extract arrays; handle missing keys safely with TRY_CAST | Can you write a query that won't fail if a JSON key is missing? |
+| [11](Week 2 (Days 8–15) Data Loading & Semi-Structured Data/11.md) | INFER_SCHEMA vs explicit schema; validation patterns | Use INFER_SCHEMA on a messy file; compare to hand-defined schema; document trade-offs | Can you explain when to use each approach in production? |
+| [12](Week 2 (Days 8–15) Data Loading & Semi-Structured Data/12.md) | COPY INTO <location> for export; compression, partitioning | Export a table to external stage in Parquet + SNAPPY; verify file structure downstream | Can you design an export that a Spark job can consume without transformation? |
+| [13](Week 2 (Days 8–15) Data Loading & Semi-Structured Data/13.md) | Error handling: load history, validation queries, quarantine patterns | Intentionally break a load; trace errors through SYSTEM$LOAD_HISTORY; build a simple quarantine table | Can you isolate bad rows without stopping the entire pipeline? |
+| [14–15](Week 2 (Days 8–15) Data Loading & Semi-Structured Data/14–15.md) | Phase 1 review + practice questions | Rebuild Week 1–2 queries from scratch; answer 20 scenario-based questions (create your own if needed) | Can you explain *why* each answer is correct, not just which one? |
 
 **Phase 1 checkpoint**: If you can't load a CSV, parse JSON, and explain RBAC without referencing docs, don't proceed. Fix gaps now.
 
@@ -63,38 +63,38 @@ The exam is scenario-based. You won't be asked "what does COPY INTO do?" You'll 
 
 | Day | Focus | Action Items | Success Check |
 |-----|-------|-------------|---------------|
-| 16 | CTEs vs subqueries: readability, reuse, performance | Rewrite the same logic 3 ways; compare explain plans; document when each is appropriate | Can you justify your structural choice for a given scenario? |
-| 17 | CASE, COALESCE, NULLIF, IFF: conditional logic patterns | Build a query that handles 5 different NULL/edge cases; test with intentionally messy data | Can you predict output for a row with all NULL inputs? |
-| 18 | Type conversion: CAST vs TRY_CAST, implicit vs explicit | Break queries with type mismatches; fix with explicit casting; document when implicit works | Can you spot a silent coercion bug before it causes wrong results? |
-| 19 | Deduplication patterns: ROW_NUMBER + QUALIFY, DISTINCT, GROUP BY | Create duplicate data; apply 3 dedup strategies; compare results, performance, idempotency | Can you choose the right pattern for "keep latest" vs "keep any"? |
-| 20 | Handling NULLs in aggregations, joins, business logic | Write queries that produce different results based on NULL handling; document the business impact | Can you explain to a stakeholder why their metric changed after a NULL fix? |
-| 21 | Window functions intro: PARTITION BY, ORDER BY, default frame | Compute running totals, rank within groups, lag/lead; break them with missing ORDER BY | Can you explain why a window function without ORDER BY is often useless? |
-| 22 | Review + scenario practice | Solve 5 transformation scenarios end-to-end; time yourself; compare to reference solutions | Are you optimizing for correctness first, then performance? |
+| [16](Week 3 (Days 16–22) Transformation Fundamentals/16.md) | CTEs vs subqueries: readability, reuse, performance | Rewrite the same logic 3 ways; compare explain plans; document when each is appropriate | Can you justify your structural choice for a given scenario? |
+| [17](Week 3 (Days 16–22) Transformation Fundamentals/17.md) | CASE, COALESCE, NULLIF, IFF: conditional logic patterns | Build a query that handles 5 different NULL/edge cases; test with intentionally messy data | Can you predict output for a row with all NULL inputs? |
+| [18](Week 3 (Days 16–22) Transformation Fundamentals/18.md) | Type conversion: CAST vs TRY_CAST, implicit vs explicit | Break queries with type mismatches; fix with explicit casting; document when implicit works | Can you spot a silent coercion bug before it causes wrong results? |
+| [19](Week 3 (Days 16–22) Transformation Fundamentals/19.md) | Deduplication patterns: ROW_NUMBER + QUALIFY, DISTINCT, GROUP BY | Create duplicate data; apply 3 dedup strategies; compare results, performance, idempotency | Can you choose the right pattern for "keep latest" vs "keep any"? |
+| [20](Week 3 (Days 16–22) Transformation Fundamentals/20.md) | Handling NULLs in aggregations, joins, business logic | Write queries that produce different results based on NULL handling; document the business impact | Can you explain to a stakeholder why their metric changed after a NULL fix? |
+| [21](Week 3 (Days 16–22) Transformation Fundamentals/21.md) | Window functions intro: PARTITION BY, ORDER BY, default frame | Compute running totals, rank within groups, lag/lead; break them with missing ORDER BY | Can you explain why a window function without ORDER BY is often useless? |
+| [22](Week 3 (Days 16–22) Transformation Fundamentals/22.md) | Review + scenario practice | Solve 5 transformation scenarios end-to-end; time yourself; compare to reference solutions | Are you optimizing for correctness first, then performance? |
 
 ### Week 4 (Days 23–29): Advanced SQL & Data Modeling
 **Daily commitment**: 2 hours weekdays, 4 hours weekend
 
 | Day | Focus | Action Items | Success Check |
 |-----|-------|-------------|---------------|
-| 23 | Window frames: ROWS vs RANGE vs GROUPS; explicit frame clauses | Compute moving averages with different frames; observe how ties affect RANGE | Can you choose the right frame for a business question? |
-| 24 | QUALIFY deep dive: filtering after window calc, common mistakes | Rewrite subquery-based filters using QUALIFY; break them with alias references | Can you explain why QUALIFY can't reference SELECT aliases in all contexts? |
-| 25 | Star schema basics: fact/dim design, grain definition, surrogate keys | Model a simple sales domain; define grain; write queries that respect the grain | Can you explain why querying at the wrong grain produces wrong totals? |
-| 26 | One Big Table vs normalized: trade-offs, when to use each | Build the same report two ways; compare query complexity, performance, maintenance | Can you justify your modeling choice for a given use case? |
-| 27 | Clustering keys: when to use, how to evaluate, pruning mechanics | Cluster a large table; test pruning with SYSTEM$CLUSTERING_INFORMATION; measure impact | Can you predict whether a filter will prune before running the query? |
-| 28 | Materialization: views, materialized views, dynamic tables, transient tables | Create each type; test refresh behavior, cost, query compatibility | Can you choose the right materialization for a dashboard vs batch pipeline? |
-| 29 | Phase 2 review + integration exercise | Build a mini-pipeline: load → transform → model → query; document decisions at each step | Does your pipeline handle errors, NULLs, and performance without hand-holding? |
+| [23](Week 4 (Days 23–29) Advanced SQL & Data Modeling/23.md) | Window frames: ROWS vs RANGE vs GROUPS; explicit frame clauses | Compute moving averages with different frames; observe how ties affect RANGE | Can you choose the right frame for a business question? |
+| [24](Week 4 (Days 23–29) Advanced SQL & Data Modeling/24.md) | QUALIFY deep dive: filtering after window calc, common mistakes | Rewrite subquery-based filters using QUALIFY; break them with alias references | Can you explain why QUALIFY can't reference SELECT aliases in all contexts? |
+| [25](Week 4 (Days 23–29) Advanced SQL & Data Modeling/25.md) | Star schema basics: fact/dim design, grain definition, surrogate keys | Model a simple sales domain; define grain; write queries that respect the grain | Can you explain why querying at the wrong grain produces wrong totals? |
+| [26](Week 4 (Days 23–29) Advanced SQL & Data Modeling/26.md) | One Big Table vs normalized: trade-offs, when to use each | Build the same report two ways; compare query complexity, performance, maintenance | Can you justify your modeling choice for a given use case? |
+| [27](Week 4 (Days 23–29) Advanced SQL & Data Modeling/27.md) | Clustering keys: when to use, how to evaluate, pruning mechanics | Cluster a large table; test pruning with SYSTEM$CLUSTERING_INFORMATION; measure impact | Can you predict whether a filter will prune before running the query? |
+| [28](Week 4 (Days 23–29) Advanced SQL & Data Modeling/28.md) | Materialization: views, materialized views, dynamic tables, transient tables | Create each type; test refresh behavior, cost, query compatibility | Can you choose the right materialization for a dashboard vs batch pipeline? |
+| [29](Week 4 (Days 23–29) Advanced SQL & Data Modeling/29.md) | Phase 2 review + integration exercise | Build a mini-pipeline: load → transform → model → query; document decisions at each step | Does your pipeline handle errors, NULLs, and performance without hand-holding? |
 
 ### Week 5 (Days 30–35): Analysis Patterns & Dashboard Prep
 **Daily commitment**: 2 hours weekdays, 4 hours weekend
 
 | Day | Focus | Action Items | Success Check |
 |-----|-------|-------------|---------------|
-| 30 | Descriptive stats: AVG, STDDEV, PERCENTILE, CORR; NULL handling | Compute metrics on messy data; compare results with/without NULL filtering | Can you explain why your average changed after handling NULLs? |
-| 31 | Time-series analysis: DATE_TRUNC, LAG/LEAD, running calculations | Build a cohort analysis; compute period-over-period growth; handle missing periods | Can you make a trend chart that doesn't lie about missing data? |
-| 32 | Dashboard query patterns: parameterization, $FILTER substitution, determinism | Write a query that works with dashboard filters; test with different selections | Can you explain why non-deterministic queries break scheduled refresh? |
-| 33 | Result caching: when it works, how to validate, when to bypass | Run identical queries; check cache hits with SYSTEM$RESULT_CACHE_INFO; force re-execution | Can you predict whether a query will hit cache before running it? |
-| 34 | Row Access Policies & Dynamic Data Masking: evaluation order, testing | Create policies; test as different roles; verify dashboard behavior matches expectations | Can you explain why a dashboard shows different data to different users? |
-| 35 | Phase 2 checkpoint assessment | Take a 50-question practice exam (create from docs or use official prep); score honestly | If <70%, spend Days 36–37 reviewing weak domains before proceeding |
+| [30](Week 5 (Days 30–35) Analysis Patterns & Dashboard Prep/30.md) | Descriptive stats: AVG, STDDEV, PERCENTILE, CORR; NULL handling | Compute metrics on messy data; compare results with/without NULL filtering | Can you explain why your average changed after handling NULLs? |
+| [31](Week 5 (Days 30–35) Analysis Patterns & Dashboard Prep/31.md) | Time-series analysis: DATE_TRUNC, LAG/LEAD, running calculations | Build a cohort analysis; compute period-over-period growth; handle missing periods | Can you make a trend chart that doesn't lie about missing data? |
+| [32](Week 5 (Days 30–35) Analysis Patterns & Dashboard Prep/32.md) | Dashboard query patterns: parameterization, $FILTER substitution, determinism | Write a query that works with dashboard filters; test with different selections | Can you explain why non-deterministic queries break scheduled refresh? |
+| [33](Week 5 (Days 30–35) Analysis Patterns & Dashboard Prep/33.md) | Result caching: when it works, how to validate, when to bypass | Run identical queries; check cache hits with SYSTEM$RESULT_CACHE_INFO; force re-execution | Can you predict whether a query will hit cache before running it? |
+| [34](Week 5 (Days 30–35) Analysis Patterns & Dashboard Prep/34.md) | Row Access Policies & Dynamic Data Masking: evaluation order, testing | Create policies; test as different roles; verify dashboard behavior matches expectations | Can you explain why a dashboard shows different data to different users? |
+| [35](Week 5 (Days 30–35) Analysis Patterns & Dashboard Prep/35.md) | Phase 2 checkpoint assessment | Take a 50-question practice exam (create from docs or use official prep); score honestly | If <70%, spend Days 36–37 reviewing weak domains before proceeding |
 
 **Phase 2 checkpoint**: You should now be able to look at a business question and sketch the SQL pattern before opening Snowsight. If you're still translating word-for-word, slow down and practice pattern recognition.
 
@@ -108,26 +108,26 @@ The exam is scenario-based. You won't be asked "what does COPY INTO do?" You'll 
 
 | Day | Focus | Action Items | Success Check |
 |-----|-------|-------------|---------------|
-| 36 | Query profiling: EXPLAIN, Query Profile, ACCOUNT_USAGE | Run a slow query; identify bottleneck; apply one optimization; measure improvement | Can you spot a full scan vs pruned scan in a profile without running it? |
-| 37 | Pruning deep dive: sargable predicates, clustering alignment, common anti-patterns | Rewrite 5 non-sargable filters to be pruning-eligible; validate with SYSTEM$CLUSTERING_INFORMATION | Can you convert a function-wrapped filter to a range predicate on the fly? |
-| 38 | Warehouse sizing, multi-cluster, auto-suspend: cost vs performance trade-offs | Test the same query on different warehouse sizes; measure time vs credits; find the knee of the curve | Can you recommend a warehouse size for a given SLA and budget? |
-| 39 | Security review: RBAC audit, policy testing, sharing boundaries | Audit a role's effective privileges; test a shared dashboard as recipient; document gaps | Can you predict what a user sees before granting access? |
-| 40 | Data quality patterns: validation queries, quarantine, reconciliation | Build a validation framework for a table; test with injected bad data; verify quarantine works | Can you detect a schema drift before it breaks downstream? |
-| 41 | Troubleshooting methodology: systematic diagnosis, not guesswork | Break a working pipeline in 3 ways; practice diagnosing from symptoms to root cause | Can you isolate whether a problem is data, query, or infrastructure without changing everything? |
-| 42 | Week 6 review + scenario drills | Solve 3 complex scenarios end-to-end; time yourself; compare approach to reference | Are you asking the right diagnostic questions first, or jumping to fixes? |
+| [36](Week 6 (Days 36–42) Performance, Governance, Troubleshooting/36.md) | Query profiling: EXPLAIN, Query Profile, ACCOUNT_USAGE | Run a slow query; identify bottleneck; apply one optimization; measure improvement | Can you spot a full scan vs pruned scan in a profile without running it? |
+| [37](Week 6 (Days 36–42) Performance, Governance, Troubleshooting/37.md) | Pruning deep dive: sargable predicates, clustering alignment, common anti-patterns | Rewrite 5 non-sargable filters to be pruning-eligible; validate with SYSTEM$CLUSTERING_INFORMATION | Can you convert a function-wrapped filter to a range predicate on the fly? |
+| [38](Week 6 (Days 36–42) Performance, Governance, Troubleshooting/38.md) | Warehouse sizing, multi-cluster, auto-suspend: cost vs performance trade-offs | Test the same query on different warehouse sizes; measure time vs credits; find the knee of the curve | Can you recommend a warehouse size for a given SLA and budget? |
+| [39](Week 6 (Days 36–42) Performance, Governance, Troubleshooting/39.md) | Security review: RBAC audit, policy testing, sharing boundaries | Audit a role's effective privileges; test a shared dashboard as recipient; document gaps | Can you predict what a user sees before granting access? |
+| [40](Week 6 (Days 36–42) Performance, Governance, Troubleshooting/40.md) | Data quality patterns: validation queries, quarantine, reconciliation | Build a validation framework for a table; test with injected bad data; verify quarantine works | Can you detect a schema drift before it breaks downstream? |
+| [41](Week 6 (Days 36–42) Performance, Governance, Troubleshooting/41.md) | Troubleshooting methodology: systematic diagnosis, not guesswork | Break a working pipeline in 3 ways; practice diagnosing from symptoms to root cause | Can you isolate whether a problem is data, query, or infrastructure without changing everything? |
+| [42](Week 6 (Days 36–42) Performance, Governance, Troubleshooting/42.md) | Week 6 review + scenario drills | Solve 3 complex scenarios end-to-end; time yourself; compare approach to reference | Are you asking the right diagnostic questions first, or jumping to fixes? |
 
 ### Week 7 (Days 43–49): Visualization, Notebooks, Real-World Workflows
 **Daily commitment**: 2 hours weekdays, 4 hours weekend
 
 | Day | Focus | Action Items | Success Check |
 |-----|-------|-------------|---------------|
-| 43 | Snowsight dashboards: tile configuration, filter binding, refresh modes | Build a dashboard with 3 tiles, 2 filters, one scheduled refresh; test as different roles | Can you explain why a filter doesn't affect a tile without reconfiguring it? |
-| 44 | Chart selection: bar vs scatter vs heat grid vs scorecard; when each misleads | Create the same data as 4 chart types; document which questions each answers well/poorly | Can you choose a chart that doesn't hide the insight? |
-| 45 | Notebooks vs Worksheets: when to use each, result caching, promotion patterns | Prototype an analysis in both; promote a validated query to a dashboard tile; document the workflow | Can you explain why you wouldn't build a production dashboard directly in a Notebook? |
-| 46 | Naming conventions, query tagging, documentation: governance in practice | Apply a naming standard to a messy query; add QUERY_TAG; validate with catalog tools | Can you make a query self-documenting without comments? |
-| 47 | End-to-end workflow: from raw file to dashboard | Ingest a CSV → validate → transform → model → visualize → share; document each decision | Does your workflow handle errors, NULLs, performance, and governance without manual intervention? |
-| 48 | Exam-style scenario practice: 10 complex questions | Answer questions that combine multiple domains; explain reasoning aloud; time yourself | Are you recognizing patterns, or re-deriving from first principles every time? |
-| 49 | Phase 3 checkpoint: full practice exam | Take a timed, 100-question practice exam; score; analyze weak areas | If <80%, spend Days 50–52 targeting gaps before final review |
+| [43](Week 7 (Days 43–49) Visualization, Notebooks, Real-World Workflows/43.md) | Snowsight dashboards: tile configuration, filter binding, refresh modes | Build a dashboard with 3 tiles, 2 filters, one scheduled refresh; test as different roles | Can you explain why a filter doesn't affect a tile without reconfiguring it? |
+| [44](Week 7 (Days 43–49) Visualization, Notebooks, Real-World Workflows/44.md) | Chart selection: bar vs scatter vs heat grid vs scorecard; when each misleads | Create the same data as 4 chart types; document which questions each answers well/poorly | Can you choose a chart that doesn't hide the insight? |
+| [45](Week 7 (Days 43–49) Visualization, Notebooks, Real-World Workflows/45.md) | Notebooks vs Worksheets: when to use each, result caching, promotion patterns | Prototype an analysis in both; promote a validated query to a dashboard tile; document the workflow | Can you explain why you wouldn't build a production dashboard directly in a Notebook? |
+| [46](Week 7 (Days 43–49) Visualization, Notebooks, Real-World Workflows/46.md) | Naming conventions, query tagging, documentation: governance in practice | Apply a naming standard to a messy query; add QUERY_TAG; validate with catalog tools | Can you make a query self-documenting without comments? |
+| [47](Week 7 (Days 43–49) Visualization, Notebooks, Real-World Workflows/47.md) | End-to-end workflow: from raw file to dashboard | Ingest a CSV → validate → transform → model → visualize → share; document each decision | Does your workflow handle errors, NULLs, performance, and governance without manual intervention? |
+| [48](Week 7 (Days 43–49) Visualization, Notebooks, Real-World Workflows/48.md) | Exam-style scenario practice: 10 complex questions | Answer questions that combine multiple domains; explain reasoning aloud; time yourself | Are you recognizing patterns, or re-deriving from first principles every time? |
+| [49](Week 7 (Days 43–49) Visualization, Notebooks, Real-World Workflows/49.md) | Phase 3 checkpoint: full practice exam | Take a timed, 100-question practice exam; score; analyze weak areas | If <80%, spend Days 50–52 targeting gaps before final review |
 
 **Phase 3 checkpoint**: You should now be able to look at a broken dashboard and diagnose whether the issue is query logic, filter binding, policy evaluation, or caching—without guessing. If you're still troubleshooting by changing one thing at a time randomly, practice systematic diagnosis.
 
@@ -141,21 +141,21 @@ The exam is scenario-based. You won't be asked "what does COPY INTO do?" You'll 
 
 | Day | Focus | Action Items | Success Check |
 |-----|-------|-------------|---------------|
-| 50 | Analyze practice exam results; identify top 3 weak domains | List specific concepts you missed; rank by exam weight and your confidence | Do you know *why* you got each question wrong, not just which answer was right? |
-| 51–53 | Deep dive on weak domains | Re-study, re-practice, re-explain the top 3 weak areas; create your own practice questions | Can you teach each concept to someone else without notes? |
-| 54 | Memorize defaults & traps table (from cheatsheet) | Write the defaults table from memory; verify; repeat until perfect | Can you recall 90% of defaults without looking? |
-| 55 | Speed drills: rewrite patterns under time pressure | Take 10 common patterns; rewrite each from memory in <2 minutes; check accuracy | Are you sacrificing correctness for speed? Slow down if so. |
-| 56 | Full mock exam under timed conditions | Simulate exam environment: no docs, no breaks, strict timing; score honestly | Does your score reflect readiness, or did you get lucky? |
+| [50](Week 8 (Days 50–56) Targeted Review & Weakness Closure/50.md) | Analyze practice exam results; identify top 3 weak domains | List specific concepts you missed; rank by exam weight and your confidence | Do you know *why* you got each question wrong, not just which answer was right? |
+| [51–53](Week 8 (Days 50–56) Targeted Review & Weakness Closure/51–53.md) | Deep dive on weak domains | Re-study, re-practice, re-explain the top 3 weak areas; create your own practice questions | Can you teach each concept to someone else without notes? |
+| [54](Week 8 (Days 50–56) Targeted Review & Weakness Closure/54.md) | Memorize defaults & traps table (from cheatsheet) | Write the defaults table from memory; verify; repeat until perfect | Can you recall 90% of defaults without looking? |
+| [55](Week 8 (Days 50–56) Targeted Review & Weakness Closure/55.md) | Speed drills: rewrite patterns under time pressure | Take 10 common patterns; rewrite each from memory in <2 minutes; check accuracy | Are you sacrificing correctness for speed? Slow down if so. |
+| [56](Week 8 (Days 50–56) Targeted Review & Weakness Closure/56.md) | Full mock exam under timed conditions | Simulate exam environment: no docs, no breaks, strict timing; score honestly | Does your score reflect readiness, or did you get lucky? |
 
 ### Week 9 (Days 57–60): Final Prep & Execution
 **Daily commitment**: 1 hour weekdays, exam day as scheduled
 
 | Day | Focus | Action Items | Success Check |
 |-----|-------|-------------|---------------|
-| 57 | Light review: skim cheatsheet, re-run 5 key queries from memory | No new learning; reinforce what you know | Do you feel confident, or are you still discovering gaps? If gaps, postpone exam. |
-| 58 | Logistics: confirm exam time, tech check, ID ready, environment quiet | Test webcam, internet, Snowflake trial access (if needed for reference during prep) | Is everything ready so exam day is about performance, not logistics? |
-| 59 | Mental prep: sleep, hydrate, avoid cramming | No SQL after 6 PM; relax; trust your preparation | Are you rested, or trying to squeeze in "one more thing"? Stop. |
-| 60 | Exam day: execute | Read questions carefully; flag uncertain ones; manage time; trust your patterns | Did you apply your methodology, or panic and guess? |
+| [57](Week 9 (Days 57–60) Final Prep & Execution/57.md) | Light review: skim cheatsheet, re-run 5 key queries from memory | No new learning; reinforce what you know | Do you feel confident, or are you still discovering gaps? If gaps, postpone exam. |
+| [58](Week 9 (Days 57–60) Final Prep & Execution/58.md) | Logistics: confirm exam time, tech check, ID ready, environment quiet | Test webcam, internet, Snowflake trial access (if needed for reference during prep) | Is everything ready so exam day is about performance, not logistics? |
+| [59](Week 9 (Days 57–60) Final Prep & Execution/59.md) | Mental prep: sleep, hydrate, avoid cramming | No SQL after 6 PM; relax; trust your preparation | Are you rested, or trying to squeeze in "one more thing"? Stop. |
+| [60](Week 9 (Days 57–60) Final Prep & Execution/60.md) | Exam day: execute | Read questions carefully; flag uncertain ones; manage time; trust your patterns | Did you apply your methodology, or panic and guess? |
 
 ---
 
@@ -189,12 +189,12 @@ Do focus on:
 
 | Pitfall | Why It Happens | How to Avoid |
 |---------|---------------|--------------|
-| Cramming the week before | Underestimating applied nature of exam | Start early; use this plan; trust the process |
-| Passive reading without execution | Feels productive; isn't | Every study session includes writing/running SQL |
-| Ignoring weak areas | Uncomfortable; easier to review strengths | Schedule targeted review; use practice exams to expose gaps |
-| Memorizing syntax over patterns | Easier to recall; harder to apply | Focus on "when/why" not just "what"; practice scenario questions |
-| Skipping governance/performance | Seems less "analytical"; lower weight | These are tie-breakers; know them well enough to avoid costly mistakes |
-| Not simulating exam conditions | Real exam feels different; panic sets in | Take at least one full timed mock under exam-like constraints |
+| [Cramming the week before](Common Pitfalls & How to Avoid Them/Cramming the week before.md) | Underestimating applied nature of exam | Start early; use this plan; trust the process |
+| [Passive reading without execution](Common Pitfalls & How to Avoid Them/Passive reading without execution.md) | Feels productive; isn't | Every study session includes writing/running SQL |
+| [Ignoring weak areas](Common Pitfalls & How to Avoid Them/Ignoring weak areas.md) | Uncomfortable; easier to review strengths | Schedule targeted review; use practice exams to expose gaps |
+| [Memorizing syntax over patterns](Common Pitfalls & How to Avoid Them/Memorizing syntax over patterns.md) | Easier to recall; harder to apply | Focus on "when/why" not just "what"; practice scenario questions |
+| [Skipping governance/performance](Common Pitfalls & How to Avoid Them/Skipping governanceperformance.md) | Seems less "analytical"; lower weight | These are tie-breakers; know them well enough to avoid costly mistakes |
+| [Not simulating exam conditions](Common Pitfalls & How to Avoid Them/Not simulating exam conditions.md) | Real exam feels different; panic sets in | Take at least one full timed mock under exam-like constraints |
 
 ---
 
