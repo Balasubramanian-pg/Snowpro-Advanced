@@ -1,0 +1,14 @@
+# TIMESTAMP_TYPE_MAPPING(Parameters  Variables  ConfigurationTIMESTAMP_TYPE_MAPPING.md)
+
+> **Section**: Parameters / Variables / Configuration  
+> **Source**: [01 Data Ingestion Preparation/1.5 Data Processing Pipelines/1.5.1 Cleanse, conform, and enrich data/1.5.1 Cleanse, conform, and enrich data.md](../1.5.1 Cleanse, conform, and enrich data.md)
+
+---
+
+## Overview
+
+## Key Characteristics
+
+## Examples
+
+## Notes
