@@ -1,0 +1,14 @@
+# RETURN_SCHEMA(Data ModelRETURN_SCHEMA.md)
+
+> **Section**: Data Model  
+> **Source**: [01 Data Ingestion Preparation/1.7 Snowflake Functions/Readme/Readme.md](../Readme.md)
+
+---
+
+## Overview
+
+## Key Characteristics
+
+## Examples
+
+## Notes
