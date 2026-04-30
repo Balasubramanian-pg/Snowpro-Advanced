@@ -1,0 +1,14 @@
+# TABLE_DATABASE(INFORMATION_SCHEMA.STREAMSTABLE_DATABASE.md)
+
+> **Section**: INFORMATION_SCHEMA.STREAMS  
+> **Source**: [01 Data Ingestion Preparation/1.5 Data Processing Pipelines/1.5.2 Automate and implement data  pipelines/1.5.2 Automate and implement data  pipelines.md](../1.5.2 Automate and implement data  pipelines.md)
+
+---
+
+## Overview
+
+## Key Characteristics
+
+## Examples
+
+## Notes
