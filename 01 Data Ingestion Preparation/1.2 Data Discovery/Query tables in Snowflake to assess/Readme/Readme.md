@@ -11,10 +11,10 @@ For SnowPro Advanced candidates, understanding the cost, performance, and memory
 
 | Assessment Type | Purpose | Key Snowflake Objects / Functions | Execution Cost Profile |
 | :--- | :--- | :--- | :--- |
-| **Metadata Profiling** | Determine table schema, data types, and total volume without scanning data. | `INFORMATION_SCHEMA.COLUMNS`, `SHOW TABLES`, `COUNT(*)` (no predicates) | Cloud Services only (Zero Warehouse Compute) |
-| **Approximate Profiling** | Estimate cardinality and data distribution on massive datasets quickly. | `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE` | Low compute / Low memory overhead |
-| **Sample Profiling** | Perform complex anomaly detection on a representative subset of data. | `SAMPLE` / `TABLESAMPLE` (Row or Block) | Variable, based on sample size |
-| **Exact Profiling** | Validate strict business keys, null ratios, and specific string patterns. | `COUNT(DISTINCT)`, `MIN()`, `MAX()`, `RLIKE`, RegEx functions | High compute / High memory footprint (blocking operations) |
+| [**Metadata Profiling**](Assessment Pattern Summary/Metadata Profiling.md) | Determine table schema, data types, and total volume without scanning data. | `INFORMATION_SCHEMA.COLUMNS`, `SHOW TABLES`, `COUNT(*)` (no predicates) | Cloud Services only (Zero Warehouse Compute) |
+| [**Approximate Profiling**](Assessment Pattern Summary/Approximate Profiling.md) | Estimate cardinality and data distribution on massive datasets quickly. | `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE` | Low compute / Low memory overhead |
+| [**Sample Profiling**](Assessment Pattern Summary/Sample Profiling.md) | Perform complex anomaly detection on a representative subset of data. | `SAMPLE` / `TABLESAMPLE` (Row or Block) | Variable, based on sample size |
+| [**Exact Profiling**](Assessment Pattern Summary/Exact Profiling.md) | Validate strict business keys, null ratios, and specific string patterns. | `COUNT(DISTINCT)`, `MIN()`, `MAX()`, `RLIKE`, RegEx functions | High compute / High memory footprint (blocking operations) |
 
 # 4. Architecture
 The following flowchart illustrates the optimal routing for data discovery queries to minimize warehouse compute costs while maximizing analytical value.
