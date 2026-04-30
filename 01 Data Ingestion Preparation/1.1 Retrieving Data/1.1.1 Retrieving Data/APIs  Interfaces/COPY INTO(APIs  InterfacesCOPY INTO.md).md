@@ -11,8 +11,6 @@ If you’re treating it like a simple file import script, you’ll run into fric
 - **No built-in idempotency**: Running it twice on the same files doubles your data. You manage deduplication or use `PURGE` + staging tables.
 - **Compute-bound**: Requires an active warehouse. Unloading still spins up compute because Snowflake rewrites data into columnar files.
 
----
-
 **Examples**
 
 **1. Load from internal named stage (CSV)**
@@ -69,8 +67,6 @@ VALIDATION_MODE = 'RETURN_10_ROWS';
 ```
 *Breakdown*: Doesn’t load anything. Returns up to 10 rows that would be parsed, letting you validate format, delimiters, and data types before committing to a full run. Pair this with `COPY_HISTORY` to track past runs.
 
----
-
 **Notes**
 First-principles check: `COPY INTO` is a **batch parallelizer**, not a streaming pipeline. If you’re dropping files into S3 every few seconds, you’ll burn warehouse credits and hit concurrency limits. For that, use **Snowpipe** (auto-ingest via notifications) or **streaming ingestion** (Kafka/Snowpipe Streaming). `COPY INTO` shines when you have bounded batches: daily dumps, backfills, archival loads, or ad-hoc bulk imports.
 
@@ -82,4 +78,3 @@ Duplicates are your problem, not Snowflake’s. `COPY INTO` doesn’t track what
 
 If you’re prepping for interviews or certs, don’t just memorize syntax. Understand the execution model: stage → parallel file readers → warehouse compute → micro-partition writes. That mental model explains why warehouse size matters, why file count impacts speed, and why Snowpipe exists as a separate service.
 
-What’s your actual use case here? Are you loading daily CSV dumps, unloading for a data lake, or prepping for a scenario-based question? I’ll help you trim the fat and focus on what actually shows up in real workflows.
