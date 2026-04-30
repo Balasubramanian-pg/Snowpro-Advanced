@@ -1,0 +1,14 @@
+# SCHEDULED_TIME(ACCOUNT_USAGE.TASK_HISTORYSCHEDULED_TIME.md)
+
+> **Section**: ACCOUNT_USAGE.TASK_HISTORY  
+> **Source**: [01 Data Ingestion Preparation/1.5 Data Processing Pipelines/1.5.5 Use logging and monitoring  solutions/1.5.5 Use logging and monitoring  solutions.md](../1.5.5 Use logging and monitoring  solutions.md)
+
+---
+
+## Overview
+
+## Key Characteristics
+
+## Examples
+
+## Notes
