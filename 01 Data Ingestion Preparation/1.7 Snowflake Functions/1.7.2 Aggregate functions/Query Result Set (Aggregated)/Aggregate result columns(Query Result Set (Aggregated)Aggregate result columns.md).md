@@ -1,0 +1,14 @@
+# Aggregate result columns(Query Result Set (Aggregated)Aggregate result columns.md)
+
+> **Section**: Query Result Set (Aggregated)  
+> **Source**: [01 Data Ingestion Preparation/1.7 Snowflake Functions/1.7.2 Aggregate functions/1.7.2 Aggregate functions.md](../1.7.2 Aggregate functions.md)
+
+---
+
+## Overview
+
+## Key Characteristics
+
+## Examples
+
+## Notes
